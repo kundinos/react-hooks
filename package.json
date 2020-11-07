@@ -3,8 +3,11 @@
   "version": "0.0.1",
   "description": "Set of useful React hooks",
   "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "compile": "tsc",
+    "publish:patch": "npm run compile && npm publish"
   },
   "repository": {
     "type": "git",
@@ -37,6 +40,7 @@
     "eslint-plugin-react-hooks": "^4.0.8",
     "jest": "^26.2.2",
     "prettier": "^2.0.5",
+    "react": "^17.0.1",
     "typescript": "^3.9.7"
   }
 }
