@@ -1,5 +1,5 @@
 {
-  "name": "@kundin/react-hooks",
+  "name": "@kundinos/react-hooks",
   "version": "0.0.1",
   "description": "Set of useful React hooks",
   "main": "dist/index.js",
@@ -7,11 +7,13 @@
   "scripts": {
     "test": "jest",
     "compile": "tsc",
-    "publish:patch": "npm run compile && npm publish"
+    "publish:patch": "npm run compile && npm version patch && npm publish",
+    "publish:minor": "npm run compile && npm version minor && npm publish",
+    "publish:major": "npm run compile && npm version major && npm publish"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Kundin/react-hooks.git"
+    "url": "git+https://github.com/kundinos/react-hooks.git"
   },
   "keywords": [
     "react",
@@ -23,9 +25,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Kundin/react-hooks/issues"
+    "url": "https://github.com/kundinos/react-hooks/issues"
   },
-  "homepage": "https://github.com/Kundin/react-hooks#readme",
+  "homepage": "https://github.com/kundinos/react-hooks#readme",
   "devDependencies": {
     "@types/jest": "^26.0.8",
     "@types/react-dom": "^16.9.8",
