@@ -1,5 +1,5 @@
 {
-  "include": ["src/*/*.ts"],
+  "include": ["src"],
   "compilerOptions": {
     "target": "ES6",
     "skipLibCheck": true,
@@ -7,6 +7,7 @@
     "baseUrl": "src",
     "outDir": "dist",
     "sourceMap": true,
-    "declaration": true
+    "declaration": true,
+    "moduleResolution": "Node"
   }
 }
