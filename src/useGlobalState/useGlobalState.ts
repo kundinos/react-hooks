@@ -1,44 +1,31 @@
-import { Dispatch, useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
-export interface Store {
-  state: unknown;
-  listeners: Dispatch<unknown>[];
-}
+const store = { state: undefined, initialState: undefined, listeners: [] };
 
-const store = { state: null, listeners: [] };
-
-export default (initialState: unknown) => {
-  store.state = store.state || initialState;
+export default (initialState?: unknown) => {
+  const [state, setState] = useState(store.state || initialState);
 
   //
-  const addListener = useCallback(() => {
-    const listener = useState()[1];
-
-    store.listeners.push(listener);
-
-    return listener;
-  }, []);
-
-  //
-  const removeListener = useCallback((targetListener) => {
-    store.listeners = store.listeners.filter((listener) => listener !== targetListener);
-  }, []);
-
-  //
-  const setState = useCallback((input) => {
-    const isFnc = typeof input === 'function';
-    const newState = isFnc ? input(store.state) : input;
-    const nextState = { ...store.state, ...newState };
-
-    return nextState;
+  const isCurrentListener = useCallback((listener) => {
+    return listener === setState;
   }, []);
 
   //
   useEffect(() => {
-    const listener = addListener();
+    store.initialState = store.initialState || initialState;
+    store.state = state;
 
-    return () => removeListener(listener);
-  }, []);
+    store.listeners.forEach((listener) => !isCurrentListener(listener) && listener(state));
+  }, [state]);
 
-  return [store.state, setState];
+  //
+  useEffect(() => {
+    store.listeners.push(setState);
+
+    return () => {
+      store.listeners = store.listeners.filter((listener) => !isCurrentListener(listener));
+    };
+  });
+
+  return [state, setState];
 };
