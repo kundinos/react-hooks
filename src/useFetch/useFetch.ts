@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
 type UseFetchResult = {
+  loading: boolean;
   response: Response;
   error: unknown;
   repeat: () => void;
@@ -9,6 +10,7 @@ type UseFetchResult = {
 type UseFetch = (input: RequestInfo, init?: RequestInit) => UseFetchResult;
 
 const useFetch: UseFetch = (input, init) => {
+  const [loading, setLoading] = useState(true);
   const [response, setResponse] = useState<Response>(null);
   const [error, setError] = useState<unknown>(null);
   const [counter, setCounter] = useState(1);
@@ -19,12 +21,16 @@ const useFetch: UseFetch = (input, init) => {
 
   useEffect(() => {
     async function load() {
+      setLoading(true);
+
       try {
         const response = await fetch(input, init);
 
         setResponse(response);
       } catch (err) {
         setError(err);
+      } finally {
+        setLoading(false);
       }
     }
 
@@ -32,6 +38,7 @@ const useFetch: UseFetch = (input, init) => {
   }, [counter]);
 
   return {
+    loading,
     response,
     error,
     repeat,

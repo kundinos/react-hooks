@@ -49,6 +49,23 @@ describe('Fetching data', () => {
 
     expect(response).toStrictEqual(trulyResponse);
   });
+
+  test('Must have the correct status', async () => {
+    fetchMock.mockResponseOnce('Success!');
+
+    let result;
+    let waitForNextUpdate;
+    act(() => {
+      const useFetchRender = renderHook(() => useFetch('/'));
+
+      result = useFetchRender.result;
+      waitForNextUpdate = useFetchRender.waitForNextUpdate;
+    });
+
+    expect(result.current.loading).toBeTruthy();
+    await waitForNextUpdate();
+    expect(result.current.loading).toBeFalsy();
+  });
 });
 
 describe('Repeating the request', () => {
@@ -80,6 +97,32 @@ describe('Repeating the request', () => {
     const secondResponse = await result.current.response.text();
     expect(secondResponse).toStrictEqual('The second answer');
   });
+
+  test('Must have the correct status', async () => {
+    fetchMock.mockResponses('1', '2');
+
+    let result;
+    let waitForNextUpdate;
+    act(() => {
+      const useFetchRender = renderHook(() => useFetch('/'));
+
+      result = useFetchRender.result;
+      waitForNextUpdate = useFetchRender.waitForNextUpdate;
+    });
+
+    expect(result.current.loading).toBeTruthy();
+
+    await waitForNextUpdate();
+    expect(result.current.loading).toBeFalsy();
+
+    act(() => {
+      result.current.repeat();
+    });
+    expect(result.current.loading).toBeTruthy();
+
+    await waitForNextUpdate();
+    expect(result.current.loading).toBeFalsy();
+  });
 });
 
 describe('Throwing the error', () => {
@@ -104,5 +147,22 @@ describe('Throwing the error', () => {
     await waitForNextUpdate();
     const error = await result.current.error;
     expect(error).toStrictEqual(trulyResponse);
+  });
+
+  test('Must have the correct status', async () => {
+    fetchMock.mockReject(new Error('Error message'));
+
+    let result;
+    let waitForNextUpdate;
+    act(() => {
+      const useFetchRender = renderHook(() => useFetch('/'));
+
+      result = useFetchRender.result;
+      waitForNextUpdate = useFetchRender.waitForNextUpdate;
+    });
+
+    expect(result.current.loading).toBeTruthy();
+    await waitForNextUpdate();
+    expect(result.current.loading).toBeFalsy();
   });
 });
