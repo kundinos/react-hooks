@@ -6,7 +6,7 @@ const config: Config.InitialOptions = {
   setupFiles: ['../setupJest.ts'],
   collectCoverage: true,
   collectCoverageFrom: ['**/*.{ts,tsx}'],
-  coverageDirectory: 'coverage',
+  coverageDirectory: '../coverage',
   rootDir: 'src',
 };
 
