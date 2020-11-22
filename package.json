@@ -30,7 +30,7 @@
   "homepage": "https://github.com/kundinos/react-hooks#readme",
   "files": [
     "dist",
-    "!dist/**/__tests__/**"
+    "!dist/*.test.*"
   ],
   "devDependencies": {
     "@babel/core": "^7.12.3",
