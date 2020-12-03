@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "Пример использования useGlobalState из @kundinos/react-hooks",
   "keywords": [
-    "react",
-    "hooks",
-    "themes",
+    "kundios",
     "state",
-    "kundinos"
+    "themes",
+    "hooks",
+    "react"
   ],
   "main": "src/index.js",
   "dependencies": {
