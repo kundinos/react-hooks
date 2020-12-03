@@ -1,4 +1,3 @@
-export { default as useBem } from './useBem';
 export { default as useFetch } from './useFetch';
 export { default as useFullState } from './useFullState';
 export { default as useGlobalState } from './useGlobalState';
