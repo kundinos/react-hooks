@@ -6,10 +6,7 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
-    "compile": "tsc",
-    "publish:patch": "npm run compile && npm version patch && npm publish --access=public && git push && git push --tags",
-    "publish:minor": "npm run compile && npm version minor && npm publish --access=public && git push && git push --tags",
-    "publish:major": "npm run compile && npm version major && npm publish --access=public && git push && git push --tags"
+    "compile": "tsc"
   },
   "repository": {
     "type": "git",
