@@ -1,11 +1,12 @@
 name: Publish to NPM
+
 on: push
 
 jobs:
   publish:
     runs-on: ubuntu-latest
+
     steps:
-      - id: publish
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
@@ -13,7 +14,9 @@ jobs:
       - run: npm ci
       - run: npm run compile
       - run: npm test
-      - uses: JS-DevTools/npm-publish@v1
+
+      - id: publish
+        uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
 
