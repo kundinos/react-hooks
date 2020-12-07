@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { render } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 
@@ -89,4 +89,34 @@ test('Must call the cleanup callback', async () => {
 
   expect(cleanup).toBeCalled();
   expect(cleanup).toBeCalledTimes(1);
+});
+
+test('Must correctly callback when changing callback function', () => {
+  const callback1 = jest.fn();
+  const callback2 = jest.fn();
+
+  const Component = () => {
+    const [, setUpdate] = useState(0);
+    const refCallback = useRef(callback1);
+
+    useTimeout(refCallback.current, 5000);
+
+    useEffect(() => {
+      refCallback.current = callback2;
+      setUpdate(1);
+    }, []);
+
+    return <div />;
+  };
+
+  render(<Component />);
+
+  expect(callback1).not.toBeCalled();
+  expect(callback2).not.toBeCalled();
+
+  jest.runAllTimers();
+
+  expect(callback1).not.toBeCalled();
+  expect(callback2).toBeCalled();
+  expect(callback2).toBeCalledTimes(1);
 });

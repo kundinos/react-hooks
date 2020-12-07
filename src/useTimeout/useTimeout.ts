@@ -20,7 +20,7 @@ export default (callback: Callback, timeout?: Timeout) => {
     }, timeout);
 
     return resetTimeout;
-  }, [timeout]);
+  }, [callback, timeout]);
 
   return { resetTimeout };
 };
