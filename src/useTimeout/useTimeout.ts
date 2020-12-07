@@ -1,16 +1,23 @@
 import { useCallback, useEffect, useRef } from 'react';
 
-export default (callback: () => void, timeout: number) => {
+export type Cleanup = void | Function;
+export type Callback = () => Cleanup;
+export type Timeout = number;
+
+export default (callback: Callback, timeout?: Timeout) => {
+  const refCleanup = useRef<Cleanup>();
   const refTimeoutId = useRef<NodeJS.Timeout>();
 
-  const resetTimeout = useCallback((fn?: () => void) => {
+  const resetTimeout = useCallback(() => {
     clearTimeout(refTimeoutId.current);
 
-    fn && fn();
+    refCleanup.current && refCleanup.current();
   }, []);
 
   useEffect(() => {
-    refTimeoutId.current = setTimeout(callback, timeout);
+    refTimeoutId.current = setTimeout(() => {
+      refCleanup.current = callback();
+    }, timeout);
 
     return resetTimeout;
   }, [timeout]);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { render } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 
@@ -38,6 +38,32 @@ test('Must correct cleanup timer when unmounting', () => {
   expect(callback).not.toBeCalled();
 });
 
+test('Must callback correctly when changing timeout', () => {
+  const callback = jest.fn();
+
+  const Component = () => {
+    const [timeout, setTimeout] = useState(1000);
+
+    useTimeout(callback, timeout);
+
+    useEffect(() => {
+      setTimeout(100);
+      setTimeout(2000);
+    }, []);
+
+    return <div />;
+  };
+
+  render(<Component />);
+
+  expect(callback).not.toBeCalled();
+
+  jest.runAllTimers();
+
+  expect(callback).toBeCalled();
+  expect(callback).toBeCalledTimes(1);
+});
+
 test('Must be reset correctly manually', async () => {
   jest.useFakeTimers();
 
@@ -54,15 +80,13 @@ test('Must be reset correctly manually', async () => {
 test('Must call the cleanup callback', async () => {
   jest.useFakeTimers();
 
-  const callback = jest.fn();
   const cleanup = jest.fn();
-  const { result } = renderHook(() => useTimeout(callback, 1000));
+  const { result } = renderHook(() => useTimeout(() => cleanup, 1000));
   const { resetTimeout } = result.current;
 
-  resetTimeout(cleanup);
   jest.runAllTimers();
+  resetTimeout();
 
-  expect(callback).not.toBeCalled();
   expect(cleanup).toBeCalled();
   expect(cleanup).toBeCalledTimes(1);
 });
