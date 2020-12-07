@@ -20,6 +20,19 @@ test('Must call callback correctly', () => {
   expect(callback).toHaveBeenCalledTimes(2);
 });
 
+test('Must stop interval when delay=null', () => {
+  jest.useFakeTimers();
+
+  const callback = jest.fn();
+  renderHook(() => useInterval(callback, null));
+
+  expect(callback).not.toBeCalled();
+
+  jest.runOnlyPendingTimers();
+
+  expect(callback).not.toBeCalled();
+});
+
 test('Must be correctly reset interval manually', async () => {
   jest.useFakeTimers();
 

@@ -15,6 +15,8 @@ export default (callback: Callback, delay?: Delay) => {
   }, []);
 
   useEffect(() => {
+    if (delay === null) return resetInterval;
+
     refTimeoutId.current = setInterval(() => {
       refCleanup.current = callback();
     }, delay);
