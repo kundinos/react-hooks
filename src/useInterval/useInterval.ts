@@ -1,23 +1,26 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 
-export type UseIntervalCallback = () => void;
+export type Cleanup = void | Function;
+export type Callback = () => Cleanup;
+export type Delay = null | number;
 
-export default (callback: UseIntervalCallback, delay: number) => {
-  const refCallback = useRef<UseIntervalCallback>();
+export default (callback: Callback, delay?: Delay) => {
+  const refCleanup = useRef<Cleanup>();
+  const refTimeoutId = useRef<NodeJS.Timeout>();
+
+  const resetInterval = useCallback(() => {
+    clearInterval(refTimeoutId.current);
+
+    refCleanup.current && refCleanup.current();
+  }, []);
 
   useEffect(() => {
-    refCallback.current = callback;
-  }, [callback]);
+    refTimeoutId.current = setInterval(() => {
+      refCleanup.current = callback();
+    }, delay);
 
-  useEffect(() => {
-    function tick() {
-      refCallback.current();
-    }
+    return resetInterval;
+  }, [callback, delay]);
 
-    if (delay !== null) {
-      const intervalId = setInterval(tick, delay);
-
-      return () => clearInterval(intervalId);
-    }
-  }, [delay]);
+  return { resetInterval };
 };
