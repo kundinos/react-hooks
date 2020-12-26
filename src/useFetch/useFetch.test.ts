@@ -1,7 +1,7 @@
 import fetchMock from 'jest-fetch-mock';
 import { act, renderHook } from '@testing-library/react-hooks';
 
-import useFetch from '../useFetch';
+import useFetch from './useFetch';
 
 describe('Fetching data', () => {
   beforeEach(() => {

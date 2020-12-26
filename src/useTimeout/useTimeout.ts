@@ -1,17 +1,21 @@
 import { useCallback, useEffect, useRef } from 'react';
 
-export type Cleanup = void | Function;
+export type Cleanup = () => void | null;
 export type Callback = () => Cleanup;
 export type Timeout = number;
+export interface UseTimeoutResult {
+  resetTimeout: () => void;
+}
+export type UseTimeout = (callback: Callback, timeout?: Timeout) => UseTimeoutResult;
 
-export default (callback: Callback, timeout?: Timeout) => {
+const useTimeout: UseTimeout = (callback, timeout) => {
   const refCleanup = useRef<Cleanup>();
   const refTimeoutId = useRef<NodeJS.Timeout>();
 
   const resetTimeout = useCallback(() => {
     clearTimeout(refTimeoutId.current);
 
-    refCleanup.current && refCleanup.current();
+    if (refCleanup.current) refCleanup.current();
   }, []);
 
   useEffect(() => {
@@ -20,7 +24,9 @@ export default (callback: Callback, timeout?: Timeout) => {
     }, timeout);
 
     return resetTimeout;
-  }, [callback, timeout]);
+  }, [callback, resetTimeout, timeout]);
 
   return { resetTimeout };
 };
+
+export default useTimeout;

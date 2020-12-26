@@ -1,6 +1,6 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 
-import useGlobalState from '../useGlobalState';
+import useGlobalState from './useGlobalState';
 
 beforeEach(() => {
   const { result } = renderHook(() => useGlobalState());

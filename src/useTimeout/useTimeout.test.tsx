@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { render } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 
-import useTimeout from '../useTimeout';
+import useTimeout from './useTimeout';
 
 test('Must call callback correctly', () => {
   jest.useFakeTimers();
@@ -42,13 +42,13 @@ test('Must callback correctly when changing timeout', () => {
   const callback = jest.fn();
 
   const Component = () => {
-    const [timeout, setTimeout] = useState(1000);
+    const [delay, setDelay] = useState(1000);
 
-    useTimeout(callback, timeout);
+    useTimeout(callback, delay);
 
     useEffect(() => {
-      setTimeout(100);
-      setTimeout(2000);
+      setDelay(100);
+      setDelay(2000);
     }, []);
 
     return <div />;

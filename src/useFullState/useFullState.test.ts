@@ -1,6 +1,6 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 
-import useFullState from '../useFullState';
+import useFullState from './useFullState';
 
 test('Must be correct previous state', () => {
   const { result } = renderHook(() => useFullState(1));

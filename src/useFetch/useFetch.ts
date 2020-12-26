@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useState } from 'react';
 
-type UseFetchResult = {
+export type UseFetchResult = {
   loading: boolean;
   response: Response;
   error: unknown;
   repeat: () => void;
 };
 
-type UseFetch = (input: RequestInfo, init?: RequestInit) => UseFetchResult;
+export type UseFetch = (input: RequestInfo, init?: RequestInit) => UseFetchResult;
 
 const useFetch: UseFetch = (input, init) => {
   const [loading, setLoading] = useState(true);
@@ -24,9 +24,9 @@ const useFetch: UseFetch = (input, init) => {
       setLoading(true);
 
       try {
-        const response = await fetch(input, init);
+        const res = await fetch(input, init);
 
-        setResponse(response);
+        setResponse(res);
       } catch (err) {
         setError(err);
       } finally {
@@ -35,7 +35,7 @@ const useFetch: UseFetch = (input, init) => {
     }
 
     load();
-  }, [counter]);
+  }, [counter, init, input]);
 
   return {
     loading,

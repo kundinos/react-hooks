@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
-import useDocumentEvent from '../useDocumentEvent';
+import useDocumentEvent from './useDocumentEvent';
 
 test('Must correctly call the listener', () => {
   const listener = jest.fn();
