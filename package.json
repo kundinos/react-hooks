@@ -35,13 +35,18 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "npm test"
+      "pre-push": "lint-staged"
     }
   },
   "lint-staged": {
+    "*.{json,md,yml}": [
+      "npm run pretty",
+      "git add"
+    ],
     "*.(ts|tsx)": [
       "npm run pretty",
       "npm run lint:write",
+      "npm test",
       "git add"
     ]
   },
