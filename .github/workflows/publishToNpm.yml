@@ -8,12 +8,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: npm ci
-      - run: npm run compile
-      - run: npm test
+        run: |
+          npm ci
+          npm run compile
+          npm test
 
       - id: publish
         uses: JS-DevTools/npm-publish@v1
