@@ -1,4 +1,4 @@
-name: Node CI
+name: Code Coverage
 
 on: push
 
@@ -11,6 +11,7 @@ jobs:
 
       - name: Generate coverage report
       - run: |
+          npm ci
           npm test -- --coverage
 
       - name: Upload coverage to Codecov
