@@ -6,16 +6,25 @@ jobs:
   publish:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [12.x]
+
     steps:
       - uses: actions/checkout@v1
 
-      - uses: actions/setup-node@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install, compile, test
         run: |
           npm ci
           npm run compile
           npm test
+        env:
+          CI: true
 
       - id: publish
         uses: JS-DevTools/npm-publish@v1
