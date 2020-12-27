@@ -4,7 +4,7 @@ const config: Config.InitialOptions = {
   verbose: true,
   automock: false,
   setupFiles: ['../setupJest.ts'],
-  collectCoverage: true,
+  collectCoverage: false,
   collectCoverageFrom: ['**/*.{ts,tsx}'],
   coverageDirectory: '../coverage',
   rootDir: 'src',

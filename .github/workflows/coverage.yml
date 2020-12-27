@@ -1,0 +1,21 @@
+name: Node CI
+
+on: push
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Generate coverage report
+      - run: npm test -- --coverage
+
+      - name: Upload coverage to Codecov
+      - uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          directory: ./coverage
+          fail_ci_if_error: true
+          verbose: true
