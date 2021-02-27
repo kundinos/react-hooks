@@ -1,14 +1,15 @@
 {
-  "include": ["src", "jest.config.ts"],
   "compilerOptions": {
-    "target": "ES6",
+    "target": "ESNext",
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "baseUrl": "src",
     "outDir": "dist",
     "sourceMap": true,
     "declaration": true,
     "moduleResolution": "Node",
     "jsx": "react"
-  }
+  },
+  "include": ["src", "jest.config.ts", "webpack.config.ts", "setupJest.ts"]
 }
