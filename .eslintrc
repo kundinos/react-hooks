@@ -35,7 +35,7 @@
         "devDependencies": [
           "src/**/*.test.tsx",
           "src/**/*.test.ts",
-          "webpack.config.ts",
+          "rollup.config.ts",
           "setupJest.ts"
         ]
       }

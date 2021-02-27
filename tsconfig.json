@@ -11,5 +11,5 @@
     "moduleResolution": "Node",
     "jsx": "react"
   },
-  "include": ["src", "jest.config.ts", "webpack.config.ts", "setupJest.ts"]
+  "include": ["src"]
 }
