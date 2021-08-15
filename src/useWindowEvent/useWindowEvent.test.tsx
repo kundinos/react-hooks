@@ -38,3 +38,21 @@ test('Must delete the listener when unmounting', () => {
 
   expect(listener.mock.calls.length).toBe(1);
 });
+
+test('Should be call listener when use options.initial', () => {
+  const listener = jest.fn();
+
+  const Component = () => {
+    useWindowEvent('load', listener, { initial: true });
+
+    return <div />;
+  };
+
+  expect(listener.mock.calls.length).toBe(0);
+
+  render(<Component />);
+  expect(listener.mock.calls.length).toBe(1);
+
+  fireEvent.load(window);
+  expect(listener.mock.calls.length).toBe(2);
+});
