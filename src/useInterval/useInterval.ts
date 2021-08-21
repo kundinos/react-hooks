@@ -1,7 +1,7 @@
 import { useEffect, useRef, useCallback } from 'react';
 
 export type Cleanup = () => void | null;
-export type Callback = () => Cleanup;
+export type Callback = () => Cleanup | void;
 export type Delay = null | number;
 export interface UseIntervalResult {
   resetInterval: () => void;
@@ -22,7 +22,11 @@ const useInterval: UseInterval = (callback, delay) => {
     if (delay === null) return resetInterval;
 
     refTimeoutId.current = setInterval(() => {
-      refCleanup.current = callback();
+      const cleanup = callback();
+
+      if (typeof cleanup === 'function') {
+        refCleanup.current = cleanup;
+      }
     }, delay);
 
     return resetInterval;
