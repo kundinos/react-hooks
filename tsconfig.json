@@ -1,15 +1,13 @@
 {
   "compilerOptions": {
     "target": "ESNext",
+    "moduleResolution": "Node",
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "baseUrl": "src",
     "outDir": "dist",
     "sourceMap": true,
-    "declaration": true,
-    "moduleResolution": "Node",
-    "jsx": "react"
-  },
-  "include": ["src"]
+    "jsx": "react",
+    "resolveJsonModule": true
+  }
 }
