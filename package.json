@@ -1,6 +1,6 @@
 {
   "name": "@kundinos/react-hooks",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "Set of useful React hooks",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
