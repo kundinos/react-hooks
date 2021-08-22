@@ -12,7 +12,7 @@ export type UseWindowEvent = <K extends keyof WindowEventMap>(
 
 const useWindowEvent: UseWindowEvent = (type, listener, options) => {
   useEffect(() => {
-    if (typeof options === 'object' && options.initial) listener.bind(this, null)();
+    if (typeof options === 'object' && options.initial) listener.bind(window, null)();
 
     window.addEventListener(type, listener, options);
 
