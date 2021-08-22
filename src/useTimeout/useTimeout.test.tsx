@@ -4,9 +4,13 @@ import { renderHook } from '@testing-library/react-hooks';
 
 import useTimeout from './useTimeout';
 
-test('Must call callback correctly', () => {
-  jest.useFakeTimers();
+jest.useFakeTimers();
 
+afterEach(() => {
+  jest.clearAllTimers();
+});
+
+test('Must call callback correctly', () => {
   const callback = jest.fn();
   renderHook(() => useTimeout(callback, 1000));
 
@@ -65,8 +69,6 @@ test('Must callback correctly when changing timeout', () => {
 });
 
 test('Must be reset correctly manually', async () => {
-  jest.useFakeTimers();
-
   const callback = jest.fn();
   const { result } = renderHook(() => useTimeout(callback, 1000));
   const { resetTimeout } = result.current;
@@ -78,8 +80,6 @@ test('Must be reset correctly manually', async () => {
 });
 
 test('Must call the cleanup callback', async () => {
-  jest.useFakeTimers();
-
   const cleanup = jest.fn();
   const { result } = renderHook(() => useTimeout(() => cleanup, 1000));
   const { resetTimeout } = result.current;
