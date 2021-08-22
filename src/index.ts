@@ -1,3 +1,4 @@
+export { default as useDate } from './useDate';
 export { default as useFetch } from './useFetch';
 export { default as useDocumentEvent } from './useDocumentEvent';
 export { default as useFullState } from './useFullState';
