@@ -2,9 +2,13 @@ import { renderHook } from '@testing-library/react-hooks';
 
 import useInterval from './useInterval';
 
-test('Must call callback correctly', () => {
-  jest.useFakeTimers();
+jest.useFakeTimers();
 
+afterEach(() => {
+  jest.clearAllTimers();
+});
+
+test('Must call callback correctly', () => {
   const callback = jest.fn();
   renderHook(() => useInterval(callback, 1000));
 
@@ -21,8 +25,6 @@ test('Must call callback correctly', () => {
 });
 
 test('Must stop interval when delay=null', () => {
-  jest.useFakeTimers();
-
   const callback = jest.fn();
   renderHook(() => useInterval(callback, null));
 
@@ -34,8 +36,6 @@ test('Must stop interval when delay=null', () => {
 });
 
 test('Must be correctly reset interval manually', async () => {
-  jest.useFakeTimers();
-
   const callback = jest.fn();
   const { result } = renderHook(() => useInterval(callback, 1000));
   const { resetInterval } = result.current;
@@ -47,8 +47,6 @@ test('Must be correctly reset interval manually', async () => {
 });
 
 test('Must call the cleanup callback', async () => {
-  jest.useFakeTimers();
-
   const cleanup = jest.fn();
   const { result } = renderHook(() => useInterval(() => cleanup, 1000));
   const { resetInterval } = result.current;
