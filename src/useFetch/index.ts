@@ -1,2 +1,2 @@
-export * from './useFetch';
+export * from './typings';
 export { default } from './useFetch';

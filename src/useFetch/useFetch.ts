@@ -1,13 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
-export type UseFetchResult = {
-  loading: boolean;
-  response: Response;
-  error: unknown;
-  repeat: () => void;
-};
-
-export type UseFetch = (input: RequestInfo, init?: RequestInit) => UseFetchResult;
+import { UseFetch } from './typings';
 
 const useFetch: UseFetch = (input, init) => {
   const [loading, setLoading] = useState(true);
