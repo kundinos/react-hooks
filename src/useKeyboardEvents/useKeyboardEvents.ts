@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-import { useWindowEvent } from '../index';
+import useWindowEvent from '../useWindowEvent';
 import { UseKeyboardEvents } from './typings';
 
 const useKeyboardEvents: UseKeyboardEvents = (eventsMap) => {
