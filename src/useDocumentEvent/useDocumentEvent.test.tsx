@@ -1,36 +1,35 @@
-import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { fireEvent } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 
 import useDocumentEvent from './useDocumentEvent';
+
+test('Should be defined', () => {
+  expect(useDocumentEvent).toBeDefined();
+});
+
+test('Should be render w/o errors', () => {
+  const { result } = renderHook(() => useDocumentEvent('load', jest.fn));
+
+  expect(result.error).toBeUndefined();
+});
 
 test('Must correctly call the listener', () => {
   const listener = jest.fn();
 
-  const Component = () => {
-    useDocumentEvent('load', listener);
+  expect(listener).toHaveBeenCalledTimes(0);
 
-    return <div />;
-  };
-
-  render(<Component />);
+  renderHook(() => useDocumentEvent('load', listener));
 
   fireEvent.load(document);
-  expect(listener.mock.calls.length).toBe(1);
+  expect(listener).toHaveBeenCalledTimes(1);
 
   fireEvent.load(document);
-  expect(listener.mock.calls.length).toBe(2);
+  expect(listener).toHaveBeenCalledTimes(2);
 });
 
 test('Must delete the listener when unmounting', () => {
   const listener = jest.fn();
-
-  const Component = () => {
-    useDocumentEvent('load', listener);
-
-    return <div />;
-  };
-
-  const { unmount } = render(<Component />);
+  const { unmount } = renderHook(() => useDocumentEvent('load', listener));
 
   fireEvent.load(document);
   expect(listener.mock.calls.length).toBe(1);
