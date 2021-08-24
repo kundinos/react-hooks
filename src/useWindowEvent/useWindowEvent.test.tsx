@@ -1,18 +1,24 @@
-import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { fireEvent } from '@testing-library/react';
+import { renderHook } from '@testing-library/react-hooks';
 
 import useWindowEvent from './useWindowEvent';
+
+test('Should be defined', () => {
+  expect(useWindowEvent).toBeDefined();
+});
+
+test('Should be render w/o errors', () => {
+  const { result } = renderHook(() => useWindowEvent('load', jest.fn));
+
+  expect(result.error).toBeUndefined();
+});
 
 test('Must correctly call the listener', () => {
   const listener = jest.fn();
 
-  const Component = () => {
-    useWindowEvent('load', listener);
+  renderHook(() => useWindowEvent('load', listener));
 
-    return <div />;
-  };
-
-  render(<Component />);
+  expect(listener.mock.calls.length).toBe(0);
 
   fireEvent.load(window);
   expect(listener.mock.calls.length).toBe(1);
@@ -23,14 +29,9 @@ test('Must correctly call the listener', () => {
 
 test('Must delete the listener when unmounting', () => {
   const listener = jest.fn();
+  const { unmount } = renderHook(() => useWindowEvent('load', listener));
 
-  const Component = () => {
-    useWindowEvent('load', listener);
-
-    return <div />;
-  };
-
-  const { unmount } = render(<Component />);
+  expect(listener.mock.calls.length).toBe(0);
 
   fireEvent.load(window);
   unmount();
@@ -42,15 +43,10 @@ test('Must delete the listener when unmounting', () => {
 test('Should be call listener when use options.initial', () => {
   const listener = jest.fn();
 
-  const Component = () => {
-    useWindowEvent('load', listener, { initial: true });
-
-    return <div />;
-  };
-
   expect(listener.mock.calls.length).toBe(0);
 
-  render(<Component />);
+  renderHook(() => useWindowEvent('load', listener, { initial: true }));
+
   expect(listener.mock.calls.length).toBe(1);
 
   fireEvent.load(window);
