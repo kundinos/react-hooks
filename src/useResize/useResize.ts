@@ -2,7 +2,7 @@ import { UseNativeEventOptions } from '../useNativeEvent';
 import useWindowEvent from '../useWindowEvent';
 
 export type UseResize = (
-  listener: (this: Window, ev: WindowEventMap['resize']) => void,
+  listener: EventListener,
   options?: boolean | UseNativeEventOptions,
 ) => void;
 
