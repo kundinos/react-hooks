@@ -23,10 +23,10 @@ describe('Use with window', () => {
 
     renderHook(() => useNativeEvent(window, 'load', listener));
 
-    fireEvent.load(document);
+    fireEvent.load(window);
     expect(listener).toHaveBeenCalledTimes(1);
 
-    fireEvent.load(document);
+    fireEvent.load(window);
     expect(listener).toHaveBeenCalledTimes(2);
   });
 
