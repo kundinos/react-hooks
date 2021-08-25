@@ -1,17 +1,8 @@
-import { useEffect } from 'react';
-
+import useNativeEvent from '../useNativeEvent';
 import { UseWindowEvent } from './typings';
 
 const useWindowEvent: UseWindowEvent = (type, listener, options) => {
-  useEffect(() => {
-    if (typeof options === 'object' && options.initial) listener.bind(window, null)();
-
-    window.addEventListener(type, listener, options);
-
-    return () => {
-      window.removeEventListener(type, listener);
-    };
-  }, [listener, options, type]);
+  return useNativeEvent(window, type, listener, options);
 };
 
 export default useWindowEvent;

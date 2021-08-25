@@ -1,9 +1,7 @@
-export interface UseWindowEventOptions extends AddEventListenerOptions {
-  initial?: boolean;
-}
+import { UseNativeEventOptions } from '../useNativeEvent';
 
 export type UseWindowEvent = <K extends keyof WindowEventMap>(
   type: K,
-  listener: (this: Window, ev: WindowEventMap[K]) => void,
-  options?: boolean | UseWindowEventOptions,
+  listener: EventListenerOrEventListenerObject,
+  options?: boolean | UseNativeEventOptions,
 ) => void;
