@@ -2,6 +2,6 @@ import { UseNativeEventOptions } from '../useNativeEvent';
 
 export type UseWindowEvent = <K extends keyof WindowEventMap>(
   type: K,
-  listener: EventListenerOrEventListenerObject,
+  listener: EventListener,
   options?: boolean | UseNativeEventOptions,
 ) => void;

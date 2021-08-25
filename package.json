@@ -11,7 +11,8 @@
     "compile": "rollup -c rollup.config.ts",
     "lint": "eslint src/ --ext '.ts, .tsx'",
     "lint:write": "eslint src/ --fix --ext '.ts, .tsx'",
-    "pretty": "prettier --write src/**/*.{ts,tsx}"
+    "pretty": "prettier --write src/**/*.{ts,tsx}",
+    "type-check": "tsc -p tsconfig.json --noEmit"
   },
   "repository": {
     "type": "git",
@@ -38,7 +39,7 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
+      "pre-commit": "npm run type-check && lint-staged",
       "pre-push": "lint-staged && npm test"
     }
   },
