@@ -1,5 +1,9 @@
 export type Handler = (e: KeyboardEvent) => void;
 export type EventsList =
+  | 'onUp'
+  | 'onRight'
+  | 'onDown'
+  | 'onLeft'
   | 'onArrowLeft'
   | 'onArrowRight'
   | 'onArrowUp'

@@ -8,24 +8,40 @@ const useKeyboardEvents: UseKeyboardEvents = (eventsMap) => {
     (e: KeyboardEvent) => {
       if (eventsMap.onKeyDown) eventsMap.onKeyDown(e);
 
-      if (eventsMap.onEscape && e.key === 'Escape') {
+      if (eventsMap.onEscape && e.code === 'Escape') {
         eventsMap.onEscape(e);
       }
 
-      if (eventsMap.onArrowLeft && e.key === 'ArrowLeft') {
+      if (eventsMap.onArrowLeft && e.code === 'ArrowLeft') {
         eventsMap.onArrowLeft(e);
       }
 
-      if (eventsMap.onArrowRight && e.key === 'ArrowRight') {
+      if (eventsMap.onArrowRight && e.code === 'ArrowRight') {
         eventsMap.onArrowRight(e);
       }
 
-      if (eventsMap.onArrowUp && e.key === 'ArrowUp') {
+      if (eventsMap.onArrowUp && e.code === 'ArrowUp') {
         eventsMap.onArrowUp(e);
       }
 
-      if (eventsMap.onArrowDown && e.key === 'ArrowDown') {
+      if (eventsMap.onArrowDown && e.code === 'ArrowDown') {
         eventsMap.onArrowDown(e);
+      }
+
+      if (eventsMap.onLeft && ['ArrowLeft', 'KeyA'].includes(e.code)) {
+        eventsMap.onLeft(e);
+      }
+
+      if (eventsMap.onRight && ['ArrowRight', 'KeyD'].includes(e.code)) {
+        eventsMap.onRight(e);
+      }
+
+      if (eventsMap.onUp && ['ArrowUp', 'KeyW'].includes(e.code)) {
+        eventsMap.onUp(e);
+      }
+
+      if (eventsMap.onDown && ['ArrowDown', 'KeyS'].includes(e.code)) {
+        eventsMap.onDown(e);
       }
 
       if (eventsMap.onSpace && e.code === 'Space') {
