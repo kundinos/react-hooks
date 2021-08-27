@@ -12,6 +12,10 @@ const useKeyboardEvents: UseKeyboardEvents = (eventsMap) => {
         eventsMap.onEscape(e);
       }
 
+      if (eventsMap.onTab && e.code === 'Tab') {
+        eventsMap.onTab(e);
+      }
+
       if (eventsMap.onArrowLeft && e.code === 'ArrowLeft') {
         eventsMap.onArrowLeft(e);
       }

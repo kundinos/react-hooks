@@ -202,4 +202,19 @@ describe('Must correctly call the listeners', () => {
     fireEvent.keyDown(window, eventOpts);
     expect(onEscape.mock.calls.length).toBe(2);
   });
+
+  test('onTab', () => {
+    const onTab = jest.fn();
+    const eventOpts = { key: 'Tab', code: 'Tab' };
+
+    renderHook(() => useKeyboardEvents({ onTab }));
+
+    expect(onTab.mock.calls.length).toBe(0);
+
+    fireEvent.keyDown(window, eventOpts);
+    expect(onTab.mock.calls.length).toBe(1);
+
+    fireEvent.keyDown(window, eventOpts);
+    expect(onTab.mock.calls.length).toBe(2);
+  });
 });
