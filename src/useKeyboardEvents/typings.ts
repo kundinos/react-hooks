@@ -9,6 +9,7 @@ export type EventsList =
   | 'onArrowUp'
   | 'onArrowDown'
   | 'onEscape'
+  | 'onTab'
   | 'onKeyDown'
   | 'onKeyPress'
   | 'onKeyUp'
