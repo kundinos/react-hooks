@@ -109,6 +109,70 @@ describe('Must correctly call the listeners', () => {
     expect(onArrowLeft.mock.calls.length).toBe(2);
   });
 
+  test('onUp', () => {
+    const onUp = jest.fn();
+    const eventArrowOpts = { key: 'ArrowUp', code: 'ArrowUp' };
+    const eventSymbolOpts = { code: 'KeyW' };
+
+    renderHook(() => useKeyboardEvents({ onUp }));
+
+    expect(onUp).toHaveBeenCalledTimes(0);
+
+    fireEvent.keyDown(window, eventArrowOpts);
+    expect(onUp).toHaveBeenCalledTimes(1);
+
+    fireEvent.keyDown(window, eventSymbolOpts);
+    expect(onUp).toHaveBeenCalledTimes(2);
+  });
+
+  test('onRight', () => {
+    const onRight = jest.fn();
+    const eventArrowOpts = { key: 'ArrowRight', code: 'ArrowRight' };
+    const eventSymbolOpts = { code: 'KeyD' };
+
+    renderHook(() => useKeyboardEvents({ onRight }));
+
+    expect(onRight).toHaveBeenCalledTimes(0);
+
+    fireEvent.keyDown(window, eventArrowOpts);
+    expect(onRight).toHaveBeenCalledTimes(1);
+
+    fireEvent.keyDown(window, eventSymbolOpts);
+    expect(onRight).toHaveBeenCalledTimes(2);
+  });
+
+  test('onDown', () => {
+    const onDown = jest.fn();
+    const eventArrowOpts = { key: 'ArrowDown', code: 'ArrowDown' };
+    const eventSymbolOpts = { code: 'KeyS' };
+
+    renderHook(() => useKeyboardEvents({ onDown }));
+
+    expect(onDown).toHaveBeenCalledTimes(0);
+
+    fireEvent.keyDown(window, eventArrowOpts);
+    expect(onDown).toHaveBeenCalledTimes(1);
+
+    fireEvent.keyDown(window, eventSymbolOpts);
+    expect(onDown).toHaveBeenCalledTimes(2);
+  });
+
+  test('onLeft', () => {
+    const onLeft = jest.fn();
+    const eventArrowOpts = { key: 'ArrowLeft', code: 'ArrowLeft' };
+    const eventSymbolOpts = { code: 'KeyA' };
+
+    renderHook(() => useKeyboardEvents({ onLeft }));
+
+    expect(onLeft).toHaveBeenCalledTimes(0);
+
+    fireEvent.keyDown(window, eventArrowOpts);
+    expect(onLeft).toHaveBeenCalledTimes(1);
+
+    fireEvent.keyDown(window, eventSymbolOpts);
+    expect(onLeft).toHaveBeenCalledTimes(2);
+  });
+
   test('onSpace', () => {
     const onSpace = jest.fn();
     const eventOpts = { code: 'Space' };
