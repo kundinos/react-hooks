@@ -10,13 +10,13 @@ describe('Must correctly call the listeners', () => {
 
     renderHook(() => useKeyboardEvents({ onKeyDown }));
 
-    expect(onKeyDown.mock.calls.length).toBe(0);
+    expect(onKeyDown).toHaveBeenCalledTimes(0);
 
     fireEvent.keyDown(window, eventOpts);
-    expect(onKeyDown.mock.calls.length).toBe(1);
+    expect(onKeyDown).toHaveBeenCalledTimes(1);
 
     fireEvent.keyDown(window, eventOpts);
-    expect(onKeyDown.mock.calls.length).toBe(2);
+    expect(onKeyDown).toHaveBeenCalledTimes(2);
   });
 
   test('onKeyPress', () => {
@@ -25,13 +25,13 @@ describe('Must correctly call the listeners', () => {
 
     renderHook(() => useKeyboardEvents({ onKeyPress }));
 
-    expect(onKeyPress.mock.calls.length).toBe(0);
+    expect(onKeyPress).toHaveBeenCalledTimes(0);
 
     fireEvent.keyPress(window, eventOpts);
-    expect(onKeyPress.mock.calls.length).toBe(1);
+    expect(onKeyPress).toHaveBeenCalledTimes(1);
 
     fireEvent.keyPress(window, eventOpts);
-    expect(onKeyPress.mock.calls.length).toBe(2);
+    expect(onKeyPress).toHaveBeenCalledTimes(2);
   });
 
   test('onKeyUp', () => {
@@ -40,13 +40,13 @@ describe('Must correctly call the listeners', () => {
 
     renderHook(() => useKeyboardEvents({ onKeyUp }));
 
-    expect(onKeyUp.mock.calls.length).toBe(0);
+    expect(onKeyUp).toHaveBeenCalledTimes(0);
 
     fireEvent.keyUp(window, eventOpts);
-    expect(onKeyUp.mock.calls.length).toBe(1);
+    expect(onKeyUp).toHaveBeenCalledTimes(1);
 
     fireEvent.keyUp(window, eventOpts);
-    expect(onKeyUp.mock.calls.length).toBe(2);
+    expect(onKeyUp).toHaveBeenCalledTimes(2);
   });
 
   test('onArrowUp', () => {
@@ -55,13 +55,13 @@ describe('Must correctly call the listeners', () => {
 
     renderHook(() => useKeyboardEvents({ onArrowUp }));
 
-    expect(onArrowUp.mock.calls.length).toBe(0);
+    expect(onArrowUp).toHaveBeenCalledTimes(0);
 
     fireEvent.keyDown(window, eventOpts);
-    expect(onArrowUp.mock.calls.length).toBe(1);
+    expect(onArrowUp).toHaveBeenCalledTimes(1);
 
     fireEvent.keyDown(window, eventOpts);
-    expect(onArrowUp.mock.calls.length).toBe(2);
+    expect(onArrowUp).toHaveBeenCalledTimes(2);
   });
 
   test('onArrowRight', () => {
@@ -70,13 +70,13 @@ describe('Must correctly call the listeners', () => {
 
     renderHook(() => useKeyboardEvents({ onArrowRight }));
 
-    expect(onArrowRight.mock.calls.length).toBe(0);
+    expect(onArrowRight).toHaveBeenCalledTimes(0);
 
     fireEvent.keyDown(window, eventOpts);
-    expect(onArrowRight.mock.calls.length).toBe(1);
+    expect(onArrowRight).toHaveBeenCalledTimes(1);
 
     fireEvent.keyDown(window, eventOpts);
-    expect(onArrowRight.mock.calls.length).toBe(2);
+    expect(onArrowRight).toHaveBeenCalledTimes(2);
   });
 
   test('onArrowDown', () => {
@@ -85,13 +85,13 @@ describe('Must correctly call the listeners', () => {
 
     renderHook(() => useKeyboardEvents({ onArrowDown }));
 
-    expect(onArrowDown.mock.calls.length).toBe(0);
+    expect(onArrowDown).toHaveBeenCalledTimes(0);
 
     fireEvent.keyDown(window, eventOpts);
-    expect(onArrowDown.mock.calls.length).toBe(1);
+    expect(onArrowDown).toHaveBeenCalledTimes(1);
 
     fireEvent.keyDown(window, eventOpts);
-    expect(onArrowDown.mock.calls.length).toBe(2);
+    expect(onArrowDown).toHaveBeenCalledTimes(2);
   });
 
   test('onArrowLeft', () => {
@@ -100,13 +100,13 @@ describe('Must correctly call the listeners', () => {
 
     renderHook(() => useKeyboardEvents({ onArrowLeft }));
 
-    expect(onArrowLeft.mock.calls.length).toBe(0);
+    expect(onArrowLeft).toHaveBeenCalledTimes(0);
 
     fireEvent.keyDown(window, eventOpts);
-    expect(onArrowLeft.mock.calls.length).toBe(1);
+    expect(onArrowLeft).toHaveBeenCalledTimes(1);
 
     fireEvent.keyDown(window, eventOpts);
-    expect(onArrowLeft.mock.calls.length).toBe(2);
+    expect(onArrowLeft).toHaveBeenCalledTimes(2);
   });
 
   test('onUp', () => {
@@ -179,13 +179,13 @@ describe('Must correctly call the listeners', () => {
 
     renderHook(() => useKeyboardEvents({ onSpace }));
 
-    expect(onSpace.mock.calls.length).toBe(0);
+    expect(onSpace).toHaveBeenCalledTimes(0);
 
     fireEvent.keyDown(window, eventOpts);
-    expect(onSpace.mock.calls.length).toBe(1);
+    expect(onSpace).toHaveBeenCalledTimes(1);
 
     fireEvent.keyDown(window, eventOpts);
-    expect(onSpace.mock.calls.length).toBe(2);
+    expect(onSpace).toHaveBeenCalledTimes(2);
   });
 
   test('onEscape', () => {
@@ -194,13 +194,13 @@ describe('Must correctly call the listeners', () => {
 
     renderHook(() => useKeyboardEvents({ onEscape }));
 
-    expect(onEscape.mock.calls.length).toBe(0);
+    expect(onEscape).toHaveBeenCalledTimes(0);
 
     fireEvent.keyDown(window, eventOpts);
-    expect(onEscape.mock.calls.length).toBe(1);
+    expect(onEscape).toHaveBeenCalledTimes(1);
 
     fireEvent.keyDown(window, eventOpts);
-    expect(onEscape.mock.calls.length).toBe(2);
+    expect(onEscape).toHaveBeenCalledTimes(2);
   });
 
   test('onTab', () => {
@@ -209,12 +209,12 @@ describe('Must correctly call the listeners', () => {
 
     renderHook(() => useKeyboardEvents({ onTab }));
 
-    expect(onTab.mock.calls.length).toBe(0);
+    expect(onTab).toHaveBeenCalledTimes(0);
 
     fireEvent.keyDown(window, eventOpts);
-    expect(onTab.mock.calls.length).toBe(1);
+    expect(onTab).toHaveBeenCalledTimes(1);
 
     fireEvent.keyDown(window, eventOpts);
-    expect(onTab.mock.calls.length).toBe(2);
+    expect(onTab).toHaveBeenCalledTimes(2);
   });
 });
