@@ -1,6 +1,6 @@
-export { default as useDate } from './useDate';
-export { default as useFetch } from './useFetch';
+export { default as useCurrentDate } from './useCurrentDate';
 export { default as useDocumentEvent } from './useDocumentEvent';
+export { default as useFetch } from './useFetch';
 export { default as useFullState } from './useFullState';
 export { default as useGlobalState } from './useGlobalState';
 export { default as useInterval } from './useInterval';

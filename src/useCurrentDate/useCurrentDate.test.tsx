@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
 
-import useDate from './useDate';
+import useCurrentDate from './useCurrentDate';
 
 jest.useFakeTimers();
 
@@ -9,7 +9,7 @@ afterEach(() => {
 });
 
 test('Must return now date', () => {
-  const { result } = renderHook(() => useDate());
+  const { result } = renderHook(() => useCurrentDate());
 
   expect(result.current).toBeInstanceOf(Date);
 });
