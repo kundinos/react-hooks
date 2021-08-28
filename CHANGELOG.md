@@ -2,6 +2,10 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/)
 
+## 0.9.1
+
+- Fix publish to NPM :)
+
 ## 0.9.0
 
 - Improve docs for hooks
