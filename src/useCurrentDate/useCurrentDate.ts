@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
 import useInterval from '../useInterval';
-import { UseDate, UseDatePeriod } from './typings';
+import { UseCurrentDate, UseCurrentDatePeriod } from './typings';
 
-function getDelay(period: UseDatePeriod): number {
+function getDelay(period: UseCurrentDatePeriod): number {
   if (typeof period === 'number') return period;
 
   const millisecond = 1;
@@ -16,7 +16,7 @@ function getDelay(period: UseDatePeriod): number {
   return periods[period];
 }
 
-const useDate: UseDate = (options) => {
+const useCurrentDate: UseCurrentDate = (options) => {
   const period = options?.every || 'second';
   const [date, setDate] = useState(new Date());
   const [delay, setDelay] = useState(getDelay(period));
@@ -32,4 +32,4 @@ const useDate: UseDate = (options) => {
   return date;
 };
 
-export default useDate;
+export default useCurrentDate;
