@@ -16,8 +16,8 @@ function getDelay(period: UseDatePeriod): number {
   return periods[period];
 }
 
-const useDate: UseDate = (opts) => {
-  const period = opts?.every || 'second';
+const useDate: UseDate = (options) => {
+  const period = options?.every || 'second';
   const [date, setDate] = useState(new Date());
   const [delay, setDelay] = useState(getDelay(period));
 
