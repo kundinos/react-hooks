@@ -1,8 +1,8 @@
 import { useCallback, useState } from 'react';
 
-import { UseToggle } from './typings';
+import { UseSwitch } from './typings';
 
-const useToggle: UseToggle = (initialState = false) => {
+const useSwitch: UseSwitch = (initialState = false) => {
   const [on, setOn] = useState(initialState);
 
   const toggle = useCallback(() => setOn((prev) => !prev), []);
@@ -10,4 +10,4 @@ const useToggle: UseToggle = (initialState = false) => {
   return [on, toggle];
 };
 
-export default useToggle;
+export default useSwitch;
