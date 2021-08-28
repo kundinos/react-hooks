@@ -1,16 +1,16 @@
-import { useRef, useState, useEffect, Dispatch, SetStateAction } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
-export type UseFullState = <S>(initialState?: S | (() => S)) => [S, Dispatch<SetStateAction<S>>, S];
+import { UseFullState } from './typings';
 
 const useFullState: UseFullState = (initialState) => {
-  const ref = useRef(undefined);
+  const prevState = useRef(undefined);
   const [state, setState] = useState(initialState);
 
   useEffect(() => {
-    ref.current = state;
+    prevState.current = state;
   }, [state]);
 
-  return [state, setState, ref.current];
+  return [state, setState, prevState.current];
 };
 
 export default useFullState;
