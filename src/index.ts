@@ -8,4 +8,5 @@ export { default as useKeyboardEvents } from './useKeyboardEvents';
 export { default as useNativeEvent } from './useNativeEvent';
 export { default as useResize } from './useResize';
 export { default as useTimeout } from './useTimeout';
+export { default as useToggle } from './useToggle';
 export { default as useWindowEvent } from './useWindowEvent';
