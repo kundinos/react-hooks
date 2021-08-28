@@ -1,4 +1,5 @@
 import { UseNativeEventOptions } from '../useNativeEvent';
+
 /**
  * Simplifies the subscribing to events on document. Deletes the subscription after unmount component
  *
