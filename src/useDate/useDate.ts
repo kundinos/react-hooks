@@ -1,14 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import useInterval from '../useInterval';
-
-export type UseDatePeriod = 'millisecond' | 'second' | 'minute' | 'hour' | 'day' | number;
-
-export interface UseDateOptions {
-  every: UseDatePeriod;
-}
-
-export type UseDate = (opts?: UseDateOptions) => Date;
+import { UseDate, UseDatePeriod } from './typings';
 
 function getDelay(period: UseDatePeriod): number {
   if (typeof period === 'number') return period;
