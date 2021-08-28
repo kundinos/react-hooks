@@ -1,10 +1,5 @@
-import { UseNativeEventOptions } from '../useNativeEvent';
 import useWindowEvent from '../useWindowEvent';
-
-export type UseResize = (
-  listener: EventListener,
-  options?: boolean | UseNativeEventOptions,
-) => void;
+import { UseResize } from './typings';
 
 const useResize: UseResize = (listener, options) => {
   return useWindowEvent('resize', listener, options);
