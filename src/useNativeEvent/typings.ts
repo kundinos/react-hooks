@@ -6,6 +6,11 @@ export interface UseNativeEventOptions extends AddEventListenerOptions {
   initial?: boolean;
 }
 
+/**
+ * Simplifies the subscribing to events on any HTML element or React ref. Deletes the subscription after unmount component
+ *
+ * @see https://kundinos.ru/react-hooks/useNativeEvent
+ */
 export type UseNativeEvent = (
   target: Target<EventTarget>,
   type: string,
