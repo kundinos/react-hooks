@@ -16,6 +16,13 @@ function getDelay(period: UseCurrentDatePeriod): number {
   return periods[period];
 }
 
+/**
+ * Returns a stateful current date, that will update every specified period
+ *
+ * @param options.every The period updating the date. Possible values: millisecond, second (by default), minute, hour, day or custom number of milliseconds
+ *
+ * @see https://kundinos.ru/react-hooks/useCurrentDate
+ */
 const useCurrentDate: UseCurrentDate = (options) => {
   const period = options?.every || 'second';
   const [date, setDate] = useState(new Date());

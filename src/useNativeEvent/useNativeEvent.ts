@@ -2,6 +2,11 @@ import { MutableRefObject, useEffect } from 'react';
 
 import { UseNativeEvent } from './typings';
 
+/**
+ * Simplifies the subscribing to events on any HTML element or React ref. Deletes the subscription after unmount component
+ *
+ * @see https://kundinos.ru/react-hooks/useNativeEvent
+ */
 const useNativeEvent: UseNativeEvent = (target, type, listener, options) => {
   const isRef = !!(target as MutableRefObject<HTMLElement>).current;
   const initTarget = isRef

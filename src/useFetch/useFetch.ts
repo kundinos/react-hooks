@@ -2,6 +2,9 @@ import { useCallback, useEffect, useState } from 'react';
 
 import { UseFetch } from './typings';
 
+/**
+ * Allows to execute a fetch request
+ */
 const useFetch: UseFetch = (input, init) => {
   const [loading, setLoading] = useState(true);
   const [response, setResponse] = useState<Response>(null);

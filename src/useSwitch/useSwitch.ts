@@ -2,6 +2,13 @@ import { useCallback, useState } from 'react';
 
 import { UseSwitch } from './typings';
 
+/**
+ * Returns a state with true/false value and function for his toggle
+ *
+ * @param initialState The initial state for the switch
+ *
+ * @see https://kundinos.ru/react-hooks/useSwitch
+ */
 const useSwitch: UseSwitch = (initialState = false) => {
   const [on, setOn] = useState(initialState);
 
