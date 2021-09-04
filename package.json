@@ -1,6 +1,6 @@
 {
   "name": "@kundinos/react-hooks",
-  "version": "0.9.1",
+  "version": "0.10.0-alpha.0",
   "description": "Set of useful React hooks",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -32,10 +32,7 @@
   },
   "homepage": "https://github.com/kundinos/react-hooks#readme",
   "files": [
-    "src",
-    "dist",
-    "!dist/*.test.*",
-    "!src/*.test.*"
+    "dist"
   ],
   "husky": {
     "hooks": {
