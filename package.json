@@ -8,7 +8,7 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
-    "compile": "rollup -c rollup.config.ts",
+    "compile": "rm -rf dist && rollup -c rollup.config.ts",
     "lint": "eslint src/ --ext '.ts, .tsx'",
     "lint:write": "eslint src/ --fix --ext '.ts, .tsx'",
     "pretty": "prettier --write src/**/*.{ts,tsx}",
@@ -90,8 +90,10 @@
     "react-test-renderer": "^17.0.2",
     "rollup": "^2.56.3",
     "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-dts": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.30.0",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.2"
