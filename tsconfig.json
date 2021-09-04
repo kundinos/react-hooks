@@ -6,7 +6,7 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "outDir": "dist",
-    "sourceMap": true,
+    "sourceMap": false,
     "jsx": "react",
     "resolveJsonModule": true,
     "declaration": true
