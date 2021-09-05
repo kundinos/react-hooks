@@ -5,7 +5,7 @@ import useTimeout, { UseTimeoutResult } from '../useTimeout';
 import { UseIdle } from './typings';
 
 const useIdle: UseIdle = (options = {}) => {
-  const { onIdle, onWakeup } = options;
+  const { onIdle, onWakeUp } = options;
   const [idle, setIdle] = useState(false);
   const timeout = useRef(options.timeout || 3000);
   const timer = useRef<UseTimeoutResult>();
@@ -21,15 +21,15 @@ const useIdle: UseIdle = (options = {}) => {
     [idle, onIdle],
   );
 
-  const emitOnWakeup = useCallback(
+  const emitOnWakeUp = useCallback(
     (e) => {
       if (!idle) return;
 
       timer.current.reset();
       setIdle(false);
-      if (onWakeup) onWakeup(e);
+      if (onWakeUp) onWakeUp(e);
     },
-    [idle, onWakeup],
+    [idle, onWakeUp],
   );
 
   const handleVisibilityChange = useCallback(
@@ -39,16 +39,16 @@ const useIdle: UseIdle = (options = {}) => {
       if (isHidden) {
         emitOnIdle(e);
       } else {
-        emitOnWakeup(e);
+        emitOnWakeUp(e);
       }
     },
-    [emitOnIdle, emitOnWakeup],
+    [emitOnIdle, emitOnWakeUp],
   );
 
   useDocumentEvent('visibilitychange', handleVisibilityChange);
-  useDocumentEvent('click', emitOnWakeup);
-  useDocumentEvent('keydown', emitOnWakeup);
-  useDocumentEvent('mousemove', emitOnWakeup);
+  useDocumentEvent('click', emitOnWakeUp);
+  useDocumentEvent('keydown', emitOnWakeUp);
+  useDocumentEvent('mousemove', emitOnWakeUp);
 
   timer.current = useTimeout(emitOnIdle, timeout.current);
 
