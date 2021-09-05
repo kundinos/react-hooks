@@ -1,5 +1,6 @@
 export interface UseIdleOptions {
-  onIdle?: (e: Event) => void;
+  timeout?: number;
+  onIdle?: (e?: Event) => void;
   onWakeup?: (e: Event) => void;
 }
 

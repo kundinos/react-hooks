@@ -42,14 +42,14 @@ describe('Behavior when change page visibility', () => {
     changeVisibility('visible');
   });
 
-  test('Should return true when page hidden', () => {
+  test('Should return true when page hidden and false when page visible', () => {
     const { result } = renderHook(() => useIdle());
 
-    act(() => {
-      changeVisibility('hidden');
-    });
-
+    act(() => changeVisibility('hidden'));
     expect(result.current).toBe(true);
+
+    act(() => changeVisibility('visible'));
+    expect(result.current).toBe(false);
   });
 
   test('Should call onIdle callback when page hidden', () => {
@@ -70,6 +70,7 @@ describe('Behavior when change page visibility', () => {
     renderHook(() => useIdle({ onWakeup }));
     expect(onWakeup).toBeCalledTimes(0);
 
+    act(() => changeVisibility('hidden'));
     act(() => changeVisibility('visible'));
     expect(onWakeup).toBeCalledTimes(1);
   });
@@ -91,6 +92,156 @@ describe('Behavior when change page visibility', () => {
     act(() => changeVisibility('hidden'));
     act(() => changeVisibility('visible'));
     expect(onIdle).toBeCalledTimes(1);
+    expect(onWakeup).toBeCalledTimes(1);
+  });
+});
+
+describe('Behavior when page visible, but user inactive', () => {
+  beforeAll(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
+  });
+
+  test('Should be idle, when user inactive default timeout', () => {
+    const onIdle = jest.fn();
+    const { result } = renderHook(() => useIdle({ onIdle }));
+
+    act(() => jest.advanceTimersByTime(1000));
+    expect(result.current).toBe(false);
+    expect(onIdle).toBeCalledTimes(0);
+
+    act(() => jest.advanceTimersByTime(2000));
+    expect(result.current).toBe(true);
+    expect(onIdle).toBeCalledTimes(1);
+  });
+
+  test('Should be idle, when user inactive custom timeout', () => {
+    const onIdle = jest.fn();
+    const { result } = renderHook(() => useIdle({ timeout: 10000, onIdle }));
+
+    act(() => jest.advanceTimersByTime(6000));
+    expect(result.current).toBe(false);
+    expect(onIdle).toBeCalledTimes(0);
+
+    act(() => jest.advanceTimersByTime(4000));
+    expect(result.current).toBe(true);
+    expect(onIdle).toBeCalledTimes(1);
+  });
+
+  test('Should be wakeup after onClick', () => {
+    const onIdle = jest.fn();
+    const onWakeup = jest.fn();
+    const { result } = renderHook(() => useIdle({ onIdle, onWakeup }));
+
+    act(() => jest.advanceTimersByTime(3000));
+    act(() => {
+      fireEvent.click(document);
+    });
+
+    expect(result.current).toBe(false);
+    expect(onIdle).toBeCalledTimes(1);
+    expect(onWakeup).toBeCalledTimes(1);
+  });
+
+  test('Should be wakeup after onKeyDown', () => {
+    const onIdle = jest.fn();
+    const onWakeup = jest.fn();
+    const { result } = renderHook(() => useIdle({ onIdle, onWakeup }));
+
+    act(() => jest.advanceTimersByTime(3000));
+    act(() => {
+      fireEvent.keyDown(document);
+    });
+
+    expect(result.current).toBe(false);
+    expect(onIdle).toBeCalledTimes(1);
+    expect(onWakeup).toBeCalledTimes(1);
+  });
+
+  test('Should be wakeup after mouse move', () => {
+    const onIdle = jest.fn();
+    const onWakeup = jest.fn();
+    const { result } = renderHook(() => useIdle({ onIdle, onWakeup }));
+
+    act(() => jest.advanceTimersByTime(3000));
+    act(() => {
+      fireEvent.mouseMove(document);
+    });
+
+    expect(result.current).toBe(false);
+    expect(onIdle).toBeCalledTimes(1);
+    expect(onWakeup).toBeCalledTimes(1);
+  });
+
+  test('Should be idle again after wake up and repeated inactivity', () => {
+    const onIdle = jest.fn();
+    const onWakeup = jest.fn();
+    const { result } = renderHook(() => useIdle({ onIdle, onWakeup }));
+
+    act(() => jest.advanceTimersByTime(3000));
+    act(() => {
+      fireEvent.click(document);
+    });
+
+    expect(result.current).toBe(false);
+    expect(onIdle).toBeCalledTimes(1);
+    expect(onWakeup).toBeCalledTimes(1);
+
+    act(() => jest.advanceTimersByTime(3000));
+    expect(onIdle).toBeCalledTimes(2);
+    expect(onWakeup).toBeCalledTimes(1);
+  });
+});
+
+describe('Behavior when page hidden and user inactive', () => {
+  beforeAll(() => {
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.clearAllTimers();
+  });
+
+  test('Should be not call onIdle again', () => {
+    const onIdle = jest.fn();
+
+    renderHook(() => useIdle({ onIdle }));
+
+    act(() => changeVisibility('hidden'));
+    act(() => jest.advanceTimersByTime(3000));
+
+    expect(onIdle).toBeCalledTimes(1);
+
+    act(() => changeVisibility('visible'));
+    act(() => jest.advanceTimersByTime(3000));
+
+    expect(onIdle).toBeCalledTimes(2);
+  });
+
+  test('Should be not call onWakeup again', () => {
+    const onWakeup = jest.fn();
+
+    renderHook(() => useIdle({ onWakeup }));
+
+    act(() => changeVisibility('hidden'));
+    act(() => changeVisibility('visible'));
+
+    expect(onWakeup).toBeCalledTimes(1);
+
+    act(() => changeVisibility('visible'));
+    act(() => {
+      fireEvent.click(document);
+    });
+    act(() => {
+      fireEvent.keyDown(document);
+    });
+    act(() => {
+      fireEvent.mouseMove(document);
+    });
+
     expect(onWakeup).toBeCalledTimes(1);
   });
 });
