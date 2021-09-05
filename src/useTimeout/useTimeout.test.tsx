@@ -71,9 +71,9 @@ test('Must callback correctly when changing timeout', () => {
 test('Must be reset correctly manually', async () => {
   const callback = jest.fn();
   const { result } = renderHook(() => useTimeout(callback, 1000));
-  const { resetTimeout } = result.current;
+  const timer = result.current;
 
-  resetTimeout();
+  timer.reset();
   jest.runAllTimers();
 
   expect(callback).not.toBeCalled();
@@ -82,10 +82,10 @@ test('Must be reset correctly manually', async () => {
 test('Must call the cleanup callback', async () => {
   const cleanup = jest.fn();
   const { result } = renderHook(() => useTimeout(() => cleanup, 1000));
-  const { resetTimeout } = result.current;
+  const timer = result.current;
 
   jest.runAllTimers();
-  resetTimeout();
+  timer.reset();
 
   expect(cleanup).toBeCalled();
   expect(cleanup).toBeCalledTimes(1);
