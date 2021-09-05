@@ -19,16 +19,6 @@ describe('Main behavior', () => {
   test('Should be a function', () => {
     expect(useIdle).toBeInstanceOf(Function);
   });
-});
-
-describe('Specific behavior', () => {
-  beforeEach(() => {
-    changeVisibility('visible');
-  });
-
-  afterAll(() => {
-    changeVisibility('visible');
-  });
 
   test('Should return a boolean value', () => {
     const { result } = renderHook(() => useIdle());
@@ -41,8 +31,18 @@ describe('Specific behavior', () => {
 
     expect(result.current).toBe(false);
   });
+});
 
-  test('Should return true when hidden visibility', () => {
+describe('Behavior when change page visibility', () => {
+  beforeEach(() => {
+    changeVisibility('visible');
+  });
+
+  afterAll(() => {
+    changeVisibility('visible');
+  });
+
+  test('Should return true when page hidden', () => {
     const { result } = renderHook(() => useIdle());
 
     act(() => {
@@ -52,31 +52,45 @@ describe('Specific behavior', () => {
     expect(result.current).toBe(true);
   });
 
-  test('Should call onChange callback', () => {
-    const onChange = jest.fn();
+  test('Should call onIdle callback when page hidden', () => {
+    const onIdle = jest.fn();
 
-    expect(onChange).toBeCalledTimes(0);
-    renderHook(() => useIdle({ onChange }));
-    expect(onChange).toBeCalledTimes(0);
+    expect(onIdle).toBeCalledTimes(0);
+    renderHook(() => useIdle({ onIdle }));
+    expect(onIdle).toBeCalledTimes(0);
 
     act(() => changeVisibility('hidden'));
-    expect(onChange).toBeCalledTimes(1);
-
-    act(() => changeVisibility('visible'));
-    expect(onChange).toBeCalledTimes(2);
+    expect(onIdle).toBeCalledTimes(1);
   });
 
-  test('Should not call onChange callback after unmount', () => {
-    const onChange = jest.fn();
-    const { unmount } = renderHook(() => useIdle({ onChange }));
+  test('Should call onWakeup callback when page visible', () => {
+    const onWakeup = jest.fn();
 
-    expect(onChange).toBeCalledTimes(0);
+    expect(onWakeup).toBeCalledTimes(0);
+    renderHook(() => useIdle({ onWakeup }));
+    expect(onWakeup).toBeCalledTimes(0);
+
+    act(() => changeVisibility('visible'));
+    expect(onWakeup).toBeCalledTimes(1);
+  });
+
+  test('Should not call callbacks after unmount', () => {
+    const onIdle = jest.fn();
+    const onWakeup = jest.fn();
+    const { unmount } = renderHook(() => useIdle({ onIdle, onWakeup }));
+
+    expect(onIdle).toBeCalledTimes(0);
+    expect(onWakeup).toBeCalledTimes(0);
 
     act(() => changeVisibility('hidden'));
-    expect(onChange).toBeCalledTimes(1);
+    act(() => changeVisibility('visible'));
+    expect(onIdle).toBeCalledTimes(1);
+    expect(onWakeup).toBeCalledTimes(1);
 
     unmount();
+    act(() => changeVisibility('hidden'));
     act(() => changeVisibility('visible'));
-    expect(onChange).toBeCalledTimes(1);
+    expect(onIdle).toBeCalledTimes(1);
+    expect(onWakeup).toBeCalledTimes(1);
   });
 });

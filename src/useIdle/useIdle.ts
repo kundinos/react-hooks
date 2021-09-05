@@ -4,16 +4,19 @@ import useDocumentEvent from '../useDocumentEvent';
 import { UseIdle } from './typings';
 
 const useIdle: UseIdle = (options = {}) => {
-  const { onChange } = options;
+  const { onIdle, onWakeup } = options;
   const [idle, setIdle] = useState(false);
 
   const handleVisibilityChange = useCallback(
     (e) => {
-      setIdle(document.visibilityState === 'hidden');
+      const isHidden = document.visibilityState === 'hidden';
 
-      if (onChange) onChange(e);
+      setIdle(isHidden);
+
+      if (onIdle && isHidden) onIdle(e);
+      if (onWakeup && !isHidden) onWakeup(e);
     },
-    [onChange],
+    [onIdle, onWakeup],
   );
 
   useDocumentEvent('visibilitychange', handleVisibilityChange);
