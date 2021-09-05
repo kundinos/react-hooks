@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/)
 ## 0.10.0
 
 - Add hook `useIdle`
+- Hook `useTimeout` now return `{ reset, repeat }` instead `{ resetTimeout }`
 - Delete unnecessary files from package
 - Minify size of package
 - Fix peer-dependency for React
