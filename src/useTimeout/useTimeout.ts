@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react';
 
-export type Cleanup = () => void | null;
+export type Cleanup = void | (() => void);
 export type Callback = () => Cleanup;
 export type Timeout = number;
 export interface UseTimeoutResult {
@@ -9,13 +9,13 @@ export interface UseTimeoutResult {
 export type UseTimeout = (callback: Callback, timeout?: Timeout) => UseTimeoutResult;
 
 const useTimeout: UseTimeout = (callback, timeout) => {
-  const refCleanup = useRef<Cleanup>();
+  const refCleanup = useRef<Cleanup>(null);
   const refTimeoutId = useRef<NodeJS.Timeout>();
 
   const resetTimeout = useCallback(() => {
     clearTimeout(refTimeoutId.current);
 
-    if (refCleanup.current) refCleanup.current();
+    if (typeof refCleanup.current === 'function') refCleanup.current();
   }, []);
 
   useEffect(() => {
