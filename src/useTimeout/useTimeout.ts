@@ -25,18 +25,13 @@ const useTimeout: UseTimeout = (callback, timeout) => {
     }, timeout);
   }, [callback, timeout]);
 
-  const repeat = useCallback(() => {
-    reset();
-    start();
-  }, [reset, start]);
-
   useEffect(() => {
     start();
 
     return reset;
   }, [reset, start]);
 
-  return { reset, repeat };
+  return { reset, repeat: start };
 };
 
 export default useTimeout;

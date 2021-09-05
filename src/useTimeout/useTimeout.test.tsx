@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { render } from '@testing-library/react';
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react-hooks';
 
 import useTimeout from './useTimeout';
 
@@ -119,4 +119,28 @@ test('Must correctly callback when changing callback function', () => {
   expect(callback1).not.toBeCalled();
   expect(callback2).toBeCalled();
   expect(callback2).toBeCalledTimes(1);
+});
+
+test('Should be call callback again when use repeat', () => {
+  const callback = jest.fn();
+  const { result } = renderHook(() => useTimeout(callback, 3000));
+
+  act(() => jest.advanceTimersByTime(3000));
+  expect(callback).toBeCalledTimes(1);
+
+  result.current.repeat();
+  act(() => jest.advanceTimersByTime(3000));
+  expect(callback).toBeCalledTimes(2);
+});
+
+test('Should be not call cleanup again when use repeat', () => {
+  const cleanup = jest.fn();
+  const { result } = renderHook(() => useTimeout(() => cleanup, 3000));
+
+  act(() => jest.advanceTimersByTime(3000));
+  expect(cleanup).toBeCalledTimes(0);
+
+  result.current.repeat();
+  act(() => jest.advanceTimersByTime(3000));
+  expect(cleanup).toBeCalledTimes(0);
 });
