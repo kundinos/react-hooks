@@ -14,7 +14,7 @@ import { UseKeyboardEvents } from './typings';
  *  onArrowUp: () => console.log('Arrow up was pressed!'),
  * })
  *
- * @see https://kundinos.ru/react-hooks/useKeyboardEvents
+ * @see https://kundinos.ru/project/react-hooks/use-keyboard-events
  */
 const useKeyboardEvents: UseKeyboardEvents = (eventsMap) => {
   const handleKeyDown = useCallback(

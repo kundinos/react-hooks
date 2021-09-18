@@ -4,6 +4,11 @@ import useDocumentEvent from '../useDocumentEvent';
 import useTimeout, { UseTimeoutResult } from '../useTimeout';
 import { UseIdle } from './typings';
 
+/**
+ * Returns a stateful value about user idle or not
+ *
+ * @see https://kundinos.ru/project/react-hooks/use-idle
+ */
 const useIdle: UseIdle = (options = {}) => {
   const { onIdle, onWakeUp } = options;
   const [idle, setIdle] = useState(false);
