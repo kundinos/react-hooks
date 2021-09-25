@@ -9,10 +9,12 @@
   "scripts": {
     "test": "jest",
     "compile": "rm -rf dist && rollup -c rollup.config.ts",
-    "lint": "eslint src/ --ext '.ts, .tsx'",
-    "lint:write": "eslint src/ --fix --ext '.ts, .tsx'",
+    "lint": "eslint --cache src/ --ext '.ts, .tsx'",
+    "lint:write": "eslint --cache src/ --fix --ext '.ts, .tsx'",
+    "lint:staged": "lint-staged",
     "pretty": "prettier --write src/**/*.{ts,tsx}",
-    "type-check": "tsc -p tsconfig.json --noEmit"
+    "type-check": "tsc -p tsconfig.json --noEmit",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -34,22 +36,9 @@
   "files": [
     "dist"
   ],
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run type-check && lint-staged",
-      "pre-push": "lint-staged && npm test"
-    }
-  },
   "lint-staged": {
-    "*.{json,md,yml}": [
-      "npm run pretty",
-      "git add"
-    ],
-    "*.(ts|tsx)": [
-      "npm run pretty",
-      "npm run lint:write",
-      "git add"
-    ]
+    "*.{json,md,yml,ts,tsx}": "prettier --write",
+    "*.(ts|tsx)": "eslint --cache --fix"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
@@ -80,7 +69,7 @@
     "eslint-plugin-prettier": "^3.4.1",
     "eslint-plugin-react": "^7.26.0",
     "eslint-plugin-react-hooks": "^4.0.8",
-    "husky": "^4.3.8",
+    "husky": "^7.0.0",
     "jest": "^26.6.3",
     "jest-fetch-mock": "^3.0.3",
     "lint-staged": "^11.0.1",
