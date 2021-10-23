@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { render } from '@testing-library/react';
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react-hooks';
 
 import useTimeout from './useTimeout';
 
@@ -71,9 +71,9 @@ test('Must callback correctly when changing timeout', () => {
 test('Must be reset correctly manually', async () => {
   const callback = jest.fn();
   const { result } = renderHook(() => useTimeout(callback, 1000));
-  const { resetTimeout } = result.current;
+  const timer = result.current;
 
-  resetTimeout();
+  timer.reset();
   jest.runAllTimers();
 
   expect(callback).not.toBeCalled();
@@ -82,10 +82,10 @@ test('Must be reset correctly manually', async () => {
 test('Must call the cleanup callback', async () => {
   const cleanup = jest.fn();
   const { result } = renderHook(() => useTimeout(() => cleanup, 1000));
-  const { resetTimeout } = result.current;
+  const timer = result.current;
 
   jest.runAllTimers();
-  resetTimeout();
+  timer.reset();
 
   expect(cleanup).toBeCalled();
   expect(cleanup).toBeCalledTimes(1);
@@ -119,4 +119,28 @@ test('Must correctly callback when changing callback function', () => {
   expect(callback1).not.toBeCalled();
   expect(callback2).toBeCalled();
   expect(callback2).toBeCalledTimes(1);
+});
+
+test('Should be call callback again when use repeat', () => {
+  const callback = jest.fn();
+  const { result } = renderHook(() => useTimeout(callback, 3000));
+
+  act(() => jest.advanceTimersByTime(3000));
+  expect(callback).toBeCalledTimes(1);
+
+  result.current.repeat();
+  act(() => jest.advanceTimersByTime(3000));
+  expect(callback).toBeCalledTimes(2);
+});
+
+test('Should be not call cleanup again when use repeat', () => {
+  const cleanup = jest.fn();
+  const { result } = renderHook(() => useTimeout(() => cleanup, 3000));
+
+  act(() => jest.advanceTimersByTime(3000));
+  expect(cleanup).toBeCalledTimes(0);
+
+  result.current.repeat();
+  act(() => jest.advanceTimersByTime(3000));
+  expect(cleanup).toBeCalledTimes(0);
 });

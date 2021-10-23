@@ -1,2 +1,2 @@
-export * from './useResize';
+export * from './typings';
 export { default } from './useResize';

@@ -8,6 +8,7 @@ const config: Config.InitialOptions = {
   collectCoverageFrom: ['**/*.{ts,tsx}'],
   coverageDirectory: '../coverage',
   rootDir: 'src',
+  testEnvironment: 'jsdom',
 };
 
 export default config;

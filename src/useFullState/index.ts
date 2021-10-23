@@ -1,2 +1,2 @@
-export * from './useFullState';
+export * from './typings';
 export { default } from './useFullState';

@@ -1,16 +1,9 @@
 import { useEffect, useState } from 'react';
 
 import useInterval from '../useInterval';
+import { UseCurrentDate, UseCurrentDatePeriod } from './typings';
 
-export type UseDatePeriod = 'millisecond' | 'second' | 'minute' | 'hour' | 'day' | number;
-
-export interface UseDateOptions {
-  every: UseDatePeriod;
-}
-
-export type UseDate = (opts?: UseDateOptions) => Date;
-
-function getDelay(period: UseDatePeriod): number {
+function getDelay(period: UseCurrentDatePeriod): number {
   if (typeof period === 'number') return period;
 
   const millisecond = 1;
@@ -23,8 +16,15 @@ function getDelay(period: UseDatePeriod): number {
   return periods[period];
 }
 
-const useDate: UseDate = (opts) => {
-  const period = opts?.every || 'second';
+/**
+ * Returns a stateful current date, that will update every specified period
+ *
+ * @param options.every The period updating the date. Possible values: millisecond, second (by default), minute, hour, day or custom number of milliseconds
+ *
+ * @see https://kundinos.ru/project/react-hooks/use-current-date
+ */
+const useCurrentDate: UseCurrentDate = (options) => {
+  const period = options?.every || 'second';
   const [date, setDate] = useState(new Date());
   const [delay, setDelay] = useState(getDelay(period));
 
@@ -39,4 +39,4 @@ const useDate: UseDate = (opts) => {
   return date;
 };
 
-export default useDate;
+export default useCurrentDate;

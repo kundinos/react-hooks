@@ -1,6 +1,6 @@
 {
   "name": "@kundinos/react-hooks",
-  "version": "0.8.2",
+  "version": "0.10.0",
   "description": "Set of useful React hooks",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -8,11 +8,13 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
-    "compile": "rollup -c rollup.config.ts",
-    "lint": "eslint src/ --ext '.ts, .tsx'",
-    "lint:write": "eslint src/ --fix --ext '.ts, .tsx'",
+    "compile": "rm -rf dist && rollup -c rollup.config.ts",
+    "lint": "eslint --cache src/ --ext '.ts, .tsx'",
+    "lint:write": "eslint --cache src/ --fix --ext '.ts, .tsx'",
+    "lint:staged": "lint-staged",
     "pretty": "prettier --write src/**/*.{ts,tsx}",
-    "type-check": "tsc -p tsconfig.json --noEmit"
+    "type-check": "tsc -p tsconfig.json --noEmit",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -32,73 +34,58 @@
   },
   "homepage": "https://github.com/kundinos/react-hooks#readme",
   "files": [
-    "src",
-    "dist",
-    "!dist/*.test.*",
-    "!src/*.test.*"
+    "dist"
   ],
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run type-check && lint-staged",
-      "pre-push": "lint-staged && npm test"
-    }
-  },
   "lint-staged": {
-    "*.{json,md,yml}": [
-      "npm run pretty",
-      "git add"
-    ],
-    "*.(ts|tsx)": [
-      "npm run pretty",
-      "npm run lint:write",
-      "git add"
-    ]
+    "*.{json,md,yml,ts,tsx}": "prettier --write",
+    "*.(ts|tsx)": "eslint --cache --fix"
   },
   "peerDependencies": {
-    "react": "^17.0.1",
+    "react": ">=16.8.0",
     "@babel/runtime": "^7.13.8"
   },
   "devDependencies": {
-    "@babel/cli": "^7.13.0",
-    "@babel/core": "^7.12.3",
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
     "@babel/plugin-transform-runtime": "^7.13.8",
-    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-env": "^7.15.6",
     "@babel/preset-react": "^7.12.5",
-    "@babel/preset-typescript": "^7.12.1",
-    "@babel/runtime": "^7.13.8",
-    "@testing-library/react": "^12.0.0",
-    "@testing-library/react-hooks": "^7.0.1",
-    "@types/jest": "^27.0.1",
-    "@types/react-dom": "^17.0.8",
+    "@babel/preset-typescript": "^7.15.0",
+    "@babel/runtime": "^7.15.4",
+    "@testing-library/react": "^12.1.0",
+    "@testing-library/react-hooks": "^7.0.2",
+    "@types/jest": "^27.0.2",
+    "@types/react-dom": "^17.0.9",
     "@types/rollup-plugin-peer-deps-external": "^2.2.0",
-    "@types/terser-webpack-plugin": "^5.0.2",
     "@typescript-eslint/eslint-plugin": "^3.7.1",
     "@typescript-eslint/parser": "^3.7.1",
-    "babel-jest": "^27.0.6",
+    "babel-jest": "^27.2.1",
     "eslint": "^7.29.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-airbnb-typescript": "^9.0.0",
     "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-prettier": "^3.4.1",
+    "eslint-plugin-react": "^7.26.0",
     "eslint-plugin-react-hooks": "^4.0.8",
-    "husky": "^4.3.6",
-    "jest": "^26.6.3",
+    "husky": "^7.0.0",
+    "jest": "^27.2.1",
     "jest-fetch-mock": "^3.0.3",
     "lint-staged": "^11.0.1",
     "prettier": "^2.0.5",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-test-renderer": "^17.0.1",
-    "rollup": "^2.40.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-test-renderer": "^17.0.2",
+    "rollup": "^2.57.0",
     "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-dts": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.30.0",
-    "ts-node": "^10.2.0",
-    "typescript": "^4.3.4"
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.3"
   },
   "dependencies": {}
 }

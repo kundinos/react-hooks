@@ -1,16 +1,21 @@
-import { useRef, useState, useEffect, Dispatch, SetStateAction } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
-export type UseFullState = <S>(initialState?: S | (() => S)) => [S, Dispatch<SetStateAction<S>>, S];
+import { UseFullState } from './typings';
 
+/**
+ * Works as useState, but contains third parameter with previous value of state
+ *
+ * @see https://kundinos.ru/project/react-hooks/use-full-state
+ */
 const useFullState: UseFullState = (initialState) => {
-  const ref = useRef(undefined);
+  const prevState = useRef(undefined);
   const [state, setState] = useState(initialState);
 
   useEffect(() => {
-    ref.current = state;
+    prevState.current = state;
   }, [state]);
 
-  return [state, setState, ref.current];
+  return [state, setState, prevState.current];
 };
 
 export default useFullState;

@@ -3,6 +3,19 @@ import { useCallback } from 'react';
 import useWindowEvent from '../useWindowEvent';
 import { UseKeyboardEvents } from './typings';
 
+/**
+ * Simplifies the subscribing to events on keyboard. Deletes the subscriptions after unmount component
+ *
+ * @param eventsMap Listing event handlers
+ *
+ * @example
+ * useKeyboardEvents({
+ *  onEscape: () => console.log('Escape was pressed!'),
+ *  onArrowUp: () => console.log('Arrow up was pressed!'),
+ * })
+ *
+ * @see https://kundinos.ru/project/react-hooks/use-keyboard-events
+ */
 const useKeyboardEvents: UseKeyboardEvents = (eventsMap) => {
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {

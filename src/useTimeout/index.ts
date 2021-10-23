@@ -1,2 +1,2 @@
-export * from './useTimeout';
+export * from './typings';
 export { default } from './useTimeout';
