@@ -2,6 +2,10 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/)
 
+## 0.11.0
+
+- Add hook `useToggle`
+
 ## 0.10.0
 
 - Add hook `useIdle`
