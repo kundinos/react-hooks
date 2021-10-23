@@ -11,4 +11,5 @@ export { default as useResize } from './useResize';
 export { default as useScroll } from './useScroll';
 export { default as useSwitch } from './useSwitch';
 export { default as useTimeout } from './useTimeout';
+export { default as useToggle } from './useToggle';
 export { default as useWindowEvent } from './useWindowEvent';
