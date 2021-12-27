@@ -8,6 +8,7 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "test": "jest && npm run size-limit",
+    "test:coverage": "jest --coverage",
     "build": "rm -rf dist && rollup -c rollup.config.ts",
     "lint": "eslint --cache src/ --ext '.ts, .tsx'",
     "lint:write": "eslint --cache src/ --fix --ext '.ts, .tsx'",

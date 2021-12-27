@@ -21,7 +21,7 @@ jobs:
       - name: Generate coverage report
         run: |
           npm ci
-          npm test -- --coverage
+          npm run test:coverage
         env:
           CI: true
 
