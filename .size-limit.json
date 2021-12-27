@@ -1,92 +1,92 @@
 [
   {
     "name": "useCurrentDate",
-    "path": "./src/index.ts",
+    "path": "./dist/index.es.js",
     "import": "{ useCurrentDate }",
-    "limit": "500 B"
+    "limit": "300 B"
   },
   {
     "name": "useDocumentEvent",
-    "path": "./src/index.ts",
+    "path": "./dist/index.es.js",
     "import": "{ useDocumentEvent }",
-    "limit": "500 B"
+    "limit": "200 B"
   },
   {
     "name": "useFetch",
-    "path": "./src/index.ts",
+    "path": "./dist/index.es.js",
     "import": "{ useFetch }",
-    "limit": "500 B"
+    "limit": "200 B"
   },
   {
     "name": "useFullState",
-    "path": "./src/index.ts",
+    "path": "./dist/index.es.js",
     "import": "{ useFullState }",
-    "limit": "500 B"
+    "limit": "200 B"
   },
   {
     "name": "useGlobalState",
-    "path": "./src/index.ts",
+    "path": "./dist/index.es.js",
     "import": "{ useGlobalState }",
-    "limit": "500 B"
+    "limit": "200 B"
   },
   {
     "name": "useIdle",
-    "path": "./src/index.ts",
+    "path": "./dist/index.es.js",
     "import": "{ useIdle }",
-    "limit": "600 B"
+    "limit": "500 B"
   },
   {
     "name": "useInterval",
-    "path": "./src/index.ts",
+    "path": "./dist/index.es.js",
     "import": "{ useInterval }",
-    "limit": "500 B"
+    "limit": "200 B"
   },
   {
     "name": "useKeyboardEvents",
-    "path": "./src/index.ts",
+    "path": "./dist/index.es.js",
     "import": "{ useKeyboardEvents }",
-    "limit": "500 B"
+    "limit": "400 B"
   },
   {
     "name": "useNativeEvent",
-    "path": "./src/index.ts",
+    "path": "./dist/index.es.js",
     "import": "{ useNativeEvent }",
-    "limit": "500 B"
+    "limit": "200 B"
   },
   {
     "name": "useResize",
-    "path": "./src/index.ts",
+    "path": "./dist/index.es.js",
     "import": "{ useResize }",
-    "limit": "500 B"
+    "limit": "200 B"
   },
   {
     "name": "useScroll",
-    "path": "./src/index.ts",
+    "path": "./dist/index.es.js",
     "import": "{ useScroll }",
-    "limit": "500 B"
+    "limit": "300 B"
   },
   {
     "name": "useSwitch",
-    "path": "./src/index.ts",
+    "path": "./dist/index.es.js",
     "import": "{ useSwitch }",
-    "limit": "500 B"
+    "limit": "100 B"
   },
   {
     "name": "useTimeout",
-    "path": "./src/index.ts",
+    "path": "./dist/index.es.js",
     "import": "{ useTimeout }",
-    "limit": "500 B"
+    "limit": "200 B"
   },
   {
     "name": "useToggle",
-    "path": "./src/index.ts",
+    "path": "./dist/index.es.js",
     "import": "{ useToggle }",
-    "limit": "500 B"
+    "limit": "100 B"
   },
   {
     "name": "useWindowEvent",
-    "path": "./src/index.ts",
+    "path": "./dist/index.es.js",
     "import": "{ useWindowEvent }",
-    "limit": "500 B"
+    "limit": "200 B"
   }
 ]
