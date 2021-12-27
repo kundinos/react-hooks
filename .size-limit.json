@@ -1,0 +1,92 @@
+[
+  {
+    "name": "useCurrentDate",
+    "path": "./src/index.ts",
+    "import": "{ useCurrentDate }",
+    "limit": "500 B"
+  },
+  {
+    "name": "useDocumentEvent",
+    "path": "./src/index.ts",
+    "import": "{ useDocumentEvent }",
+    "limit": "500 B"
+  },
+  {
+    "name": "useFetch",
+    "path": "./src/index.ts",
+    "import": "{ useFetch }",
+    "limit": "500 B"
+  },
+  {
+    "name": "useFullState",
+    "path": "./src/index.ts",
+    "import": "{ useFullState }",
+    "limit": "500 B"
+  },
+  {
+    "name": "useGlobalState",
+    "path": "./src/index.ts",
+    "import": "{ useGlobalState }",
+    "limit": "500 B"
+  },
+  {
+    "name": "useIdle",
+    "path": "./src/index.ts",
+    "import": "{ useIdle }",
+    "limit": "600 B"
+  },
+  {
+    "name": "useInterval",
+    "path": "./src/index.ts",
+    "import": "{ useInterval }",
+    "limit": "500 B"
+  },
+  {
+    "name": "useKeyboardEvents",
+    "path": "./src/index.ts",
+    "import": "{ useKeyboardEvents }",
+    "limit": "500 B"
+  },
+  {
+    "name": "useNativeEvent",
+    "path": "./src/index.ts",
+    "import": "{ useNativeEvent }",
+    "limit": "500 B"
+  },
+  {
+    "name": "useResize",
+    "path": "./src/index.ts",
+    "import": "{ useResize }",
+    "limit": "500 B"
+  },
+  {
+    "name": "useScroll",
+    "path": "./src/index.ts",
+    "import": "{ useScroll }",
+    "limit": "500 B"
+  },
+  {
+    "name": "useSwitch",
+    "path": "./src/index.ts",
+    "import": "{ useSwitch }",
+    "limit": "500 B"
+  },
+  {
+    "name": "useTimeout",
+    "path": "./src/index.ts",
+    "import": "{ useTimeout }",
+    "limit": "500 B"
+  },
+  {
+    "name": "useToggle",
+    "path": "./src/index.ts",
+    "import": "{ useToggle }",
+    "limit": "500 B"
+  },
+  {
+    "name": "useWindowEvent",
+    "path": "./src/index.ts",
+    "import": "{ useWindowEvent }",
+    "limit": "500 B"
+  }
+]
