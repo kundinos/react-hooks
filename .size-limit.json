@@ -1,0 +1,80 @@
+[
+  {
+    "name": "useCurrentDate",
+    "path": "./dist/index.es.js",
+    "import": "{ useCurrentDate }",
+    "limit": "300 B"
+  },
+  {
+    "name": "useDocumentEvent",
+    "path": "./dist/index.es.js",
+    "import": "{ useDocumentEvent }",
+    "limit": "200 B"
+  },
+  {
+    "name": "useFullState",
+    "path": "./dist/index.es.js",
+    "import": "{ useFullState }",
+    "limit": "200 B"
+  },
+  {
+    "name": "useGlobalState",
+    "path": "./dist/index.es.js",
+    "import": "{ useGlobalState }",
+    "limit": "200 B"
+  },
+  {
+    "name": "useIdle",
+    "path": "./dist/index.es.js",
+    "import": "{ useIdle }",
+    "limit": "500 B"
+  },
+  {
+    "name": "useInterval",
+    "path": "./dist/index.es.js",
+    "import": "{ useInterval }",
+    "limit": "200 B"
+  },
+  {
+    "name": "useKeyboardEvents",
+    "path": "./dist/index.es.js",
+    "import": "{ useKeyboardEvents }",
+    "limit": "400 B"
+  },
+  {
+    "name": "useNativeEvent",
+    "path": "./dist/index.es.js",
+    "import": "{ useNativeEvent }",
+    "limit": "200 B"
+  },
+  {
+    "name": "useResize",
+    "path": "./dist/index.es.js",
+    "import": "{ useResize }",
+    "limit": "200 B"
+  },
+  {
+    "name": "useScroll",
+    "path": "./dist/index.es.js",
+    "import": "{ useScroll }",
+    "limit": "300 B"
+  },
+  {
+    "name": "useSwitch",
+    "path": "./dist/index.es.js",
+    "import": "{ useSwitch }",
+    "limit": "100 B"
+  },
+  {
+    "name": "useTimeout",
+    "path": "./dist/index.es.js",
+    "import": "{ useTimeout }",
+    "limit": "200 B"
+  },
+  {
+    "name": "useWindowEvent",
+    "path": "./dist/index.es.js",
+    "import": "{ useWindowEvent }",
+    "limit": "200 B"
+  }
+]
