@@ -1,6 +1,6 @@
 import { UseNativeEventOptions } from '../useNativeEvent';
 
-export type UseResize = (
+export type UseWindowResize = (
   listener: EventListener,
   options?: boolean | UseNativeEventOptions,
 ) => void;
