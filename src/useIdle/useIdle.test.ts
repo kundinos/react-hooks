@@ -96,7 +96,7 @@ describe('Behavior when change page visibility', () => {
   });
 });
 
-describe('Behavior when page visible, but user inactive', () => {
+describe('Behavior when page visible', () => {
   beforeAll(() => {
     jest.useFakeTimers();
   });
@@ -176,6 +176,26 @@ describe('Behavior when page visible, but user inactive', () => {
     expect(onWakeUp).toBeCalledTimes(1);
   });
 
+  test('Should be wakeup after scroll', () => {
+    const onIdle = jest.fn();
+    const onWakeUp = jest.fn();
+    const { result } = renderHook(() => useIdle({ onIdle, onWakeUp }));
+
+    act(() => jest.advanceTimersByTime(3000));
+
+    expect(result.current).toBe(true);
+    expect(onIdle).toBeCalledTimes(1);
+    expect(onWakeUp).toBeCalledTimes(0);
+
+    act(() => {
+      fireEvent.scroll(document, { target: { scrollY: 100 } });
+    });
+
+    expect(result.current).toBe(false);
+    expect(onIdle).toBeCalledTimes(1);
+    expect(onWakeUp).toBeCalledTimes(1);
+  });
+
   test('Should be idle again after wake up and repeated inactivity', () => {
     const onIdle = jest.fn();
     const onWakeUp = jest.fn();
@@ -196,7 +216,7 @@ describe('Behavior when page visible, but user inactive', () => {
   });
 });
 
-describe('Behavior when page hidden and user inactive', () => {
+describe('Behavior when page hidden', () => {
   beforeAll(() => {
     jest.useFakeTimers();
   });

@@ -50,12 +50,13 @@ const useIdle: UseIdle = (options = {}) => {
     [emitOnIdle, emitOnWakeUp],
   );
 
+  timer.current = useTimeout(emitOnIdle, timeout.current);
+
   useDocumentEvent('visibilitychange', handleVisibilityChange);
   useDocumentEvent('click', emitOnWakeUp);
   useDocumentEvent('keydown', emitOnWakeUp);
   useDocumentEvent('mousemove', emitOnWakeUp);
-
-  timer.current = useTimeout(emitOnIdle, timeout.current);
+  useDocumentEvent('scroll', emitOnWakeUp);
 
   return idle;
 };
