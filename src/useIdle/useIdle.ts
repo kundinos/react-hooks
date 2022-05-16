@@ -17,22 +17,24 @@ const useIdle: UseIdle = (options = {}) => {
 
   const emitOnIdle = useCallback(
     (e?) => {
-      if (idle) return;
-
       timer.current.reset();
-      setIdle(true);
-      if (onIdle) onIdle(e);
+
+      if (!idle) {
+        setIdle(true);
+        if (onIdle) onIdle(e);
+      }
     },
     [idle, onIdle],
   );
 
   const emitOnWakeUp = useCallback(
     (e) => {
-      if (!idle) return;
+      timer.current.repeat();
 
-      timer.current.reset();
-      setIdle(false);
-      if (onWakeUp) onWakeUp(e);
+      if (idle) {
+        setIdle(false);
+        if (onWakeUp) onWakeUp(e);
+      }
     },
     [idle, onWakeUp],
   );
