@@ -3,24 +3,20 @@ import { useEffect, useRef, useCallback } from 'react';
 import { UseInterval, Cleanup } from './typings';
 
 const useInterval: UseInterval = (callback, delay) => {
-  const refCleanup = useRef<Cleanup>();
+  const refCleanup = useRef<Cleanup>(null);
   const refTimeoutId = useRef<NodeJS.Timeout>();
 
   const resetInterval = useCallback(() => {
     clearInterval(refTimeoutId.current);
 
-    if (refCleanup.current) refCleanup.current();
+    if (typeof refCleanup.current === 'function') refCleanup.current();
   }, []);
 
   useEffect(() => {
     if (delay === null) return resetInterval;
 
     refTimeoutId.current = setInterval(() => {
-      const cleanup = callback();
-
-      if (typeof cleanup === 'function') {
-        refCleanup.current = cleanup;
-      }
+      refCleanup.current = callback();
     }, delay);
 
     return resetInterval;
