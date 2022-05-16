@@ -75,7 +75,7 @@
     "name": "useTimeout",
     "path": "./dist/index.es.js",
     "import": "{ useTimeout }",
-    "limit": "200 B"
+    "limit": "250 B"
   },
   {
     "name": "useToggle",

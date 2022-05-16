@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { render } from '@testing-library/react';
+import { render, act as reactAct } from '@testing-library/react';
 import { renderHook, act } from '@testing-library/react-hooks';
 
 import useTimeout from './useTimeout';
@@ -24,17 +24,9 @@ test('Must call callback correctly', () => {
 
 test('Must correct cleanup timer when unmounting', () => {
   const callback = jest.fn();
-
-  const Component = () => {
-    useTimeout(callback, 1000);
-
-    return <div />;
-  };
-
-  const { unmount } = render(<Component />);
+  const { unmount } = renderHook(() => useTimeout(callback, 1000));
 
   unmount();
-
   expect(callback).not.toBeCalled();
 
   jest.runAllTimers();
@@ -62,8 +54,16 @@ test('Must callback correctly when changing timeout', () => {
 
   expect(callback).not.toBeCalled();
 
-  jest.runAllTimers();
+  jest.advanceTimersByTime(100);
+  expect(callback).not.toBeCalled();
 
+  jest.advanceTimersByTime(1000);
+  expect(callback).not.toBeCalled();
+
+  jest.advanceTimersByTime(400);
+  expect(callback).not.toBeCalled();
+
+  jest.advanceTimersByTime(500);
   expect(callback).toBeCalled();
   expect(callback).toBeCalledTimes(1);
 });
@@ -71,21 +71,55 @@ test('Must callback correctly when changing timeout', () => {
 test('Must be reset correctly manually', async () => {
   const callback = jest.fn();
   const { result } = renderHook(() => useTimeout(callback, 1000));
-  const timer = result.current;
 
-  timer.reset();
+  result.current.reset();
   jest.runAllTimers();
 
   expect(callback).not.toBeCalled();
 });
 
+test('Must no restart when change state', async () => {
+  const callback = jest.fn();
+
+  const Component = () => {
+    const [count, setCount] = useState(1);
+
+    useTimeout(callback, 1000);
+
+    useEffect(() => {
+      const timeoutId = setTimeout(() => {
+        setCount(2);
+      }, 500);
+
+      return () => clearTimeout(timeoutId);
+    }, []);
+
+    return <div>{count}</div>;
+  };
+
+  const { container } = render(<Component />);
+  expect(callback).not.toBeCalled();
+  expect(container.textContent).toBe('1');
+
+  reactAct(() => {
+    jest.advanceTimersByTime(1000);
+  });
+  expect(callback).toBeCalledTimes(1);
+
+  reactAct(() => {
+    jest.advanceTimersByTime(2000);
+  });
+  expect(callback).toBeCalledTimes(1);
+
+  expect(container.textContent).toBe('2');
+});
+
 test('Must call the cleanup callback', async () => {
   const cleanup = jest.fn();
   const { result } = renderHook(() => useTimeout(() => cleanup, 1000));
-  const timer = result.current;
 
   jest.runAllTimers();
-  timer.reset();
+  result.current.reset();
 
   expect(cleanup).toBeCalled();
   expect(cleanup).toBeCalledTimes(1);
@@ -133,7 +167,7 @@ test('Should be call callback again when use repeat', () => {
   expect(callback).toBeCalledTimes(2);
 });
 
-test('Should be not call cleanup again when use repeat', () => {
+test('Must call cleanup again when use repeat', () => {
   const cleanup = jest.fn();
   const { result } = renderHook(() => useTimeout(() => cleanup, 3000));
 
@@ -141,6 +175,5 @@ test('Should be not call cleanup again when use repeat', () => {
   expect(cleanup).toBeCalledTimes(0);
 
   result.current.repeat();
-  act(() => jest.advanceTimersByTime(3000));
-  expect(cleanup).toBeCalledTimes(0);
+  expect(cleanup).toBeCalledTimes(1);
 });
