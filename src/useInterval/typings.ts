@@ -1,4 +1,4 @@
-export type Cleanup = () => void | (() => void);
+export type Cleanup = void | (() => void);
 export type Callback = () => Cleanup;
 export type Delay = null | number;
 export interface UseIntervalResult {
