@@ -2,7 +2,7 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/)
 
-## 0.10.1
+## 0.10.2
 
 - Rename `useResize` to `useWindowResize`
 - No restart timeout in `useTimeout` when change state
