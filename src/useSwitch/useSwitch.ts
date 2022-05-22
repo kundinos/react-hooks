@@ -7,7 +7,7 @@ import { UseSwitch } from './typings';
  *
  * @param initialState The initial state for the switch
  *
- * @see https://kundinos.ru/project/react-hooks/use-switch
+ * @see https://kundinos.github.io/docs/docs/react-hooks/hooks/use-switch
  */
 const useSwitch: UseSwitch = (initialState = false) => {
   const [on, setOn] = useState(initialState);

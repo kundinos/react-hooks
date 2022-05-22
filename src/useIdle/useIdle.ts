@@ -7,7 +7,7 @@ import { UseIdle } from './typings';
 /**
  * Returns a stateful value about user idle or not
  *
- * @see https://kundinos.ru/project/react-hooks/use-idle
+ * @see https://kundinos.github.io/docs/docs/react-hooks/hooks/use-idle
  */
 const useIdle: UseIdle = (options = {}) => {
   const { onIdle, onWakeUp } = options;

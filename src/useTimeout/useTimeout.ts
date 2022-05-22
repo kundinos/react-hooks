@@ -2,6 +2,13 @@ import { useCallback, useEffect, useRef } from 'react';
 
 import { UseTimeout, Cleanup } from './typings';
 
+/**
+ * Declarative version of setTimeout
+ * @param callback - Callback function, that will be called after specified delay time
+ * @param delay — Time in milliseconds for timeout
+ *
+ * @see https://kundinos.github.io/docs/docs/react-hooks/hooks/use-timeout
+ */
 const useTimeout: UseTimeout = (callback, delay) => {
   const refCleanup = useRef<Cleanup>(null);
   const refTimeoutId = useRef<NodeJS.Timeout>();

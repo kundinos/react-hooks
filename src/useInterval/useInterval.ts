@@ -2,7 +2,14 @@ import { useEffect, useRef, useCallback } from 'react';
 
 import { UseInterval, Cleanup } from './typings';
 
-const useInterval: UseInterval = (callback, delay) => {
+/**
+ * Declarative version of `setInterval`
+ * @param callback — Callback function, that will be called every interval time
+ * @param interval — Time in milliseconds for interval, specify `null` to pause
+ *
+ * @see https://kundinos.github.io/docs/docs/react-hooks/hooks/use-interval
+ */
+const useInterval: UseInterval = (callback, interval) => {
   const refCleanup = useRef<Cleanup>(null);
   const refTimeoutId = useRef<NodeJS.Timeout>();
 
@@ -13,14 +20,14 @@ const useInterval: UseInterval = (callback, delay) => {
   }, []);
 
   useEffect(() => {
-    if (delay === null) return resetInterval;
+    if (interval === null) return resetInterval;
 
     refTimeoutId.current = setInterval(() => {
       refCleanup.current = callback();
-    }, delay);
+    }, interval);
 
     return resetInterval;
-  }, [callback, delay, resetInterval]);
+  }, [callback, interval, resetInterval]);
 
   return { resetInterval };
 };
