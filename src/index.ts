@@ -8,6 +8,6 @@ export { default as useKeyboardEvents } from './useKeyboardEvents';
 export { default as useNativeEvent } from './useNativeEvent';
 export { default as useWindowResize } from './useWindowResize';
 export { default as useScroll } from './useScroll';
-export { default as useSwitch } from './useSwitch';
 export { default as useTimeout } from './useTimeout';
+export { default as useToggle } from './useToggle';
 export { default as useWindowEvent } from './useWindowEvent';

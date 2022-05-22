@@ -1,18 +1,18 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 
-import useSwitch from './useSwitch';
+import useToggle from './useToggle';
 
 describe('Main behavior', () => {
   test('Should be defined', () => {
-    expect(useSwitch).toBeDefined();
+    expect(useToggle).toBeDefined();
   });
 
   test('Should be a function', () => {
-    expect(useSwitch).toBeInstanceOf(Function);
+    expect(useToggle).toBeInstanceOf(Function);
   });
 
   test('Should return array', () => {
-    const { result } = renderHook(() => useSwitch());
+    const { result } = renderHook(() => useToggle());
 
     expect(Array.isArray(result.current)).toBe(true);
     expect(result.current[0]).toBe(false);
@@ -22,19 +22,19 @@ describe('Main behavior', () => {
 
 describe('Specific behavior', () => {
   test('Should return false as initial state', () => {
-    const { result } = renderHook(() => useSwitch());
+    const { result } = renderHook(() => useToggle());
 
     expect(result.current[0]).toBe(false);
   });
 
   test('Should return the specified initial state', () => {
-    const { result } = renderHook(() => useSwitch(true));
+    const { result } = renderHook(() => useToggle(true));
 
     expect(result.current[0]).toBe(true);
   });
 
   test('Should update the state when use toggle function', () => {
-    const { result } = renderHook(() => useSwitch());
+    const { result } = renderHook(() => useToggle());
     const toggle = result.current[1];
 
     expect(result.current[0]).toBe(false);
