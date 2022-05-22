@@ -17,22 +17,24 @@ const useIdle: UseIdle = (options = {}) => {
 
   const emitOnIdle = useCallback(
     (e?) => {
-      if (idle) return;
-
       timer.current.reset();
-      setIdle(true);
-      if (onIdle) onIdle(e);
+
+      if (!idle) {
+        setIdle(true);
+        if (onIdle) onIdle(e);
+      }
     },
     [idle, onIdle],
   );
 
   const emitOnWakeUp = useCallback(
     (e) => {
-      if (!idle) return;
+      timer.current.repeat();
 
-      timer.current.reset();
-      setIdle(false);
-      if (onWakeUp) onWakeUp(e);
+      if (idle) {
+        setIdle(false);
+        if (onWakeUp) onWakeUp(e);
+      }
     },
     [idle, onWakeUp],
   );
@@ -50,12 +52,13 @@ const useIdle: UseIdle = (options = {}) => {
     [emitOnIdle, emitOnWakeUp],
   );
 
+  timer.current = useTimeout(emitOnIdle, timeout.current);
+
   useDocumentEvent('visibilitychange', handleVisibilityChange);
   useDocumentEvent('click', emitOnWakeUp);
   useDocumentEvent('keydown', emitOnWakeUp);
   useDocumentEvent('mousemove', emitOnWakeUp);
-
-  timer.current = useTimeout(emitOnIdle, timeout.current);
+  useDocumentEvent('scroll', emitOnWakeUp);
 
   return idle;
 };

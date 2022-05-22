@@ -48,9 +48,9 @@
     "limit": "200 B"
   },
   {
-    "name": "useResize",
+    "name": "useWindowResize",
     "path": "./dist/index.es.js",
-    "import": "{ useResize }",
+    "import": "{ useWindowResize }",
     "limit": "200 B"
   },
   {
@@ -69,7 +69,7 @@
     "name": "useTimeout",
     "path": "./dist/index.es.js",
     "import": "{ useTimeout }",
-    "limit": "200 B"
+    "limit": "250 B"
   },
   {
     "name": "useWindowEvent",

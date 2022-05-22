@@ -1,13 +1,13 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
-import useResize from './useResize';
+import useWindowResize from './useWindowResize';
 
 test('Must correctly call the listener', () => {
   const listener = jest.fn();
 
   const Component = () => {
-    useResize(listener);
+    useWindowResize(listener);
 
     return <div />;
   };
@@ -25,7 +25,7 @@ test('Must delete the listener when unmounting', () => {
   const listener = jest.fn();
 
   const Component = () => {
-    useResize(listener);
+    useWindowResize(listener);
 
     return <div />;
   };
@@ -43,7 +43,7 @@ test('Should be call listener when use options.initial', () => {
   const listener = jest.fn();
 
   const Component = () => {
-    useResize(listener, { initial: true });
+    useWindowResize(listener, { initial: true });
 
     return <div />;
   };

@@ -6,7 +6,7 @@ export { default as useIdle } from './useIdle';
 export { default as useInterval } from './useInterval';
 export { default as useKeyboardEvents } from './useKeyboardEvents';
 export { default as useNativeEvent } from './useNativeEvent';
-export { default as useResize } from './useResize';
+export { default as useWindowResize } from './useWindowResize';
 export { default as useScroll } from './useScroll';
 export { default as useSwitch } from './useSwitch';
 export { default as useTimeout } from './useTimeout';
