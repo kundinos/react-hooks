@@ -1,5 +1,16 @@
 [
   {
+    "name": "all",
+    "path": "./dist/index.es.js",
+    "limit": "1.4 kB"
+  },
+  {
+    "name": "useClickOutside",
+    "path": "./dist/index.es.js",
+    "import": "{ useClickOutside }",
+    "limit": "260 B"
+  },
+  {
     "name": "useCurrentDate",
     "path": "./dist/index.es.js",
     "import": "{ useCurrentDate }",

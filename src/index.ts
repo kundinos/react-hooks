@@ -1,3 +1,4 @@
+export * from './useClickOutside';
 export { default as useCurrentDate } from './useCurrentDate';
 export { default as useDocumentEvent } from './useDocumentEvent';
 export { default as useFullState } from './useFullState';
