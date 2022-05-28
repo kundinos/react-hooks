@@ -1,7 +1,7 @@
 import { fireEvent } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 
-import useDocumentEvent from './useDocumentEvent';
+import { useDocumentEvent } from './useDocumentEvent';
 
 test('Should be defined', () => {
   expect(useDocumentEvent).toBeDefined();

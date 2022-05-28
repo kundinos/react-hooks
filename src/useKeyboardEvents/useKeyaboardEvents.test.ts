@@ -1,7 +1,7 @@
 import { fireEvent } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 
-import useKeyboardEvents from './useKeyboardEvents';
+import { useKeyboardEvents } from './useKeyboardEvents';
 
 describe('Must correctly call the listeners', () => {
   test('onKeyDown', () => {

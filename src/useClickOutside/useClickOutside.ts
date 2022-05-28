@@ -1,6 +1,6 @@
 import { useRef, useCallback, MutableRefObject } from 'react';
 
-import useDocumentEvent from '../useDocumentEvent';
+import { useDocumentEvent } from '../useDocumentEvent';
 
 export type UseClickOutsideCallback = (e: MouseEvent) => void;
 

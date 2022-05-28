@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { render, act as reactAct } from '@testing-library/react';
 import { renderHook, act } from '@testing-library/react-hooks';
 
-import useTimeout from './useTimeout';
+import { useTimeout } from './useTimeout';
 
 jest.useFakeTimers();
 

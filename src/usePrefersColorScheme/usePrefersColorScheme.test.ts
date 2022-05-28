@@ -1,7 +1,7 @@
 import { act, renderHook } from '@testing-library/react-hooks/server';
 import * as MockMediaQueries from '@kundinos/mock-media-queries';
 
-import usePrefersColorScheme from './usePrefersColorScheme';
+import { usePrefersColorScheme } from './usePrefersColorScheme';
 
 beforeAll(() => {
   MockMediaQueries.startMock();

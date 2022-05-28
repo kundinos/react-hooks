@@ -1,7 +1,24 @@
 import { useRef, useCallback } from 'react';
 
-import useWindowEvent from '../useWindowEvent';
-import { UseScroll } from './typings';
+import { useWindowEvent } from '../useWindowEvent';
+import { UseNativeEventOptions } from '../useNativeEvent';
+
+export interface UseScrollPosition {
+  x: number;
+  y: number;
+}
+
+export interface UseScrollPositions {
+  previous?: UseScrollPosition;
+  current?: UseScrollPosition;
+}
+
+export type UseScrollCallback = (positions?: UseScrollPositions) => void;
+
+export type UseScroll = (
+  listener: UseScrollCallback,
+  options?: boolean | UseNativeEventOptions,
+) => void;
 
 /**
  * Simplifies the subscribing to scroll of window and has previous/current scroll positions.
@@ -9,7 +26,7 @@ import { UseScroll } from './typings';
  *
  * @see https://kundinos.github.io/docs/docs/react-hooks/hooks/use-scroll
  */
-const useScroll: UseScroll = (listener, options) => {
+export const useScroll: UseScroll = (listener, options) => {
   const previous = useRef({ x: 0, y: 0 });
 
   const handleScroll = useCallback(() => {
@@ -22,5 +39,3 @@ const useScroll: UseScroll = (listener, options) => {
 
   return useWindowEvent('scroll', handleScroll, options);
 };
-
-export default useScroll;

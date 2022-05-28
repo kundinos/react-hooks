@@ -1,7 +1,14 @@
 import { useEffect, useState } from 'react';
 
-import useInterval from '../useInterval';
-import { UseCurrentDate, UseCurrentDatePeriod } from './typings';
+import { useInterval } from '../useInterval';
+
+export type UseCurrentDatePeriod = 'millisecond' | 'second' | 'minute' | 'hour' | 'day' | number;
+
+export interface UseCurrentDateOptions {
+  every: UseCurrentDatePeriod;
+}
+
+export type UseCurrentDate = (options?: UseCurrentDateOptions) => Date;
 
 function getDelay(period: UseCurrentDatePeriod): number {
   if (typeof period === 'number') return period;
@@ -23,7 +30,7 @@ function getDelay(period: UseCurrentDatePeriod): number {
  *
  * @see https://kundinos.github.io/docs/docs/react-hooks/hooks/use-current-date
  */
-const useCurrentDate: UseCurrentDate = (options) => {
+export const useCurrentDate: UseCurrentDate = (options) => {
   const period = options?.every || 'second';
   const [date, setDate] = useState(new Date());
   const [delay, setDelay] = useState(getDelay(period));
@@ -38,5 +45,3 @@ const useCurrentDate: UseCurrentDate = (options) => {
 
   return date;
 };
-
-export default useCurrentDate;

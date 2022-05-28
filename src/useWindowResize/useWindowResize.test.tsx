@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
-import useWindowResize from './useWindowResize';
+import { useWindowResize } from './useWindowResize';
 
 test('Must correctly call the listener', () => {
   const listener = jest.fn();

@@ -1,6 +1,19 @@
 import { useEffect, useRef, useCallback } from 'react';
 
-import { UseInterval, Cleanup } from './typings';
+export type UseIntervalCleanup = void | (() => void);
+
+export type UseIntervalCallback = () => UseIntervalCleanup;
+
+export type UseIntervalDelay = null | number;
+
+export interface UseIntervalResult {
+  resetInterval: () => void;
+}
+
+export type UseInterval = (
+  callback: UseIntervalCallback,
+  delay?: UseIntervalDelay,
+) => UseIntervalResult;
 
 /**
  * Declarative version of `setInterval`
@@ -9,8 +22,8 @@ import { UseInterval, Cleanup } from './typings';
  *
  * @see https://kundinos.github.io/docs/docs/react-hooks/hooks/use-interval
  */
-const useInterval: UseInterval = (callback, interval) => {
-  const refCleanup = useRef<Cleanup>(null);
+export const useInterval: UseInterval = (callback, interval) => {
+  const refCleanup = useRef<UseIntervalCleanup>(null);
   const refTimeoutId = useRef<NodeJS.Timeout>();
 
   const resetInterval = useCallback(() => {
@@ -31,5 +44,3 @@ const useInterval: UseInterval = (callback, interval) => {
 
   return { resetInterval };
 };
-
-export default useInterval;

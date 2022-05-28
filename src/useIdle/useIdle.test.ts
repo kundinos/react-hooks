@@ -1,7 +1,7 @@
 import { fireEvent } from '@testing-library/react';
 import { renderHook, act } from '@testing-library/react-hooks';
 
-import useIdle from './useIdle';
+import { useIdle } from './useIdle';
 
 function changeVisibility(state: 'visible' | 'hidden') {
   Object.defineProperty(document, 'visibilityState', {

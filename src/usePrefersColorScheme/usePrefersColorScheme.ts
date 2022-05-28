@@ -1,6 +1,14 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { UsePrefersColorScheme, ColorScheme } from './typings';
+export type ColorScheme = 'dark' | 'light';
+
+export interface UsePrefersColorSchemeResult {
+  theme: ColorScheme;
+  isDark: boolean;
+  isLight: boolean;
+}
+
+export type UsePrefersColorScheme = () => Partial<UsePrefersColorSchemeResult>;
 
 const medias = ['dark', 'light'].map((theme) => `(prefers-color-scheme: ${theme})`);
 
@@ -9,7 +17,7 @@ const medias = ['dark', 'light'].map((theme) => `(prefers-color-scheme: ${theme}
  *
  * @see https://kundinos.github.io/docs/docs/react-hooks/hooks/use-prefers-color-scheme
  */
-const usePrefersColorScheme: UsePrefersColorScheme = () => {
+export const usePrefersColorScheme: UsePrefersColorScheme = () => {
   const [theme, setTheme] = useState<ColorScheme>(null);
 
   const handleChange = useCallback((arg: MediaQueryList | MediaQueryListEvent) => {
@@ -42,5 +50,3 @@ const usePrefersColorScheme: UsePrefersColorScheme = () => {
 
   return { theme, isDark: theme && theme === 'dark', isLight: theme && theme === 'light' };
 };
-
-export default usePrefersColorScheme;

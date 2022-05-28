@@ -1,15 +1,22 @@
 import { useCallback, useRef, useState } from 'react';
 
-import useDocumentEvent from '../useDocumentEvent';
-import useTimeout, { UseTimeoutResult } from '../useTimeout';
-import { UseIdle } from './typings';
+import { useDocumentEvent } from '../useDocumentEvent';
+import { useTimeout, UseTimeoutResult } from '../useTimeout';
+
+export interface UseIdleOptions {
+  timeout?: number;
+  onIdle?: (e?: Event) => void;
+  onWakeUp?: (e: Event) => void;
+}
+
+export type UseIdle = (options?: UseIdleOptions) => boolean;
 
 /**
  * Returns a stateful value about user idle or not
  *
  * @see https://kundinos.github.io/docs/docs/react-hooks/hooks/use-idle
  */
-const useIdle: UseIdle = (options = {}) => {
+export const useIdle: UseIdle = (options = {}) => {
   const { onIdle, onWakeUp } = options;
   const [idle, setIdle] = useState(false);
   const timeout = useRef(options.timeout || 3000);
@@ -62,5 +69,3 @@ const useIdle: UseIdle = (options = {}) => {
 
   return idle;
 };
-
-export default useIdle;

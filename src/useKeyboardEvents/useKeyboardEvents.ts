@@ -1,7 +1,28 @@
 import { useCallback } from 'react';
 
-import useWindowEvent from '../useWindowEvent';
-import { UseKeyboardEvents } from './typings';
+import { useWindowEvent } from '../useWindowEvent';
+
+export type Handler = (e: KeyboardEvent) => void;
+
+export type EventsList =
+  | 'onUp'
+  | 'onRight'
+  | 'onDown'
+  | 'onLeft'
+  | 'onArrowLeft'
+  | 'onArrowRight'
+  | 'onArrowUp'
+  | 'onArrowDown'
+  | 'onEscape'
+  | 'onTab'
+  | 'onKeyDown'
+  | 'onKeyPress'
+  | 'onKeyUp'
+  | 'onSpace';
+
+export type EventsMap = Partial<Record<EventsList, Handler>>;
+
+export type UseKeyboardEvents = (eventsMap: EventsMap) => void;
 
 /**
  * Simplifies the subscribing to events on keyboard. Deletes the subscriptions after unmount component
@@ -16,7 +37,7 @@ import { UseKeyboardEvents } from './typings';
  *
  * @see https://kundinos.github.io/docs/docs/react-hooks/hooks/use-keyboard-events
  */
-const useKeyboardEvents: UseKeyboardEvents = (eventsMap) => {
+export const useKeyboardEvents: UseKeyboardEvents = (eventsMap) => {
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (eventsMap.onKeyDown) eventsMap.onKeyDown(e);
@@ -86,5 +107,3 @@ const useKeyboardEvents: UseKeyboardEvents = (eventsMap) => {
   useWindowEvent('keypress', handleKeyPress);
   useWindowEvent('keyup', handleKeyUp);
 };
-
-export default useKeyboardEvents;

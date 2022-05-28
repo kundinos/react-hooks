@@ -1,7 +1,7 @@
 import { fireEvent } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 
-import useNativeEvent from './useNativeEvent';
+import { useNativeEvent } from './useNativeEvent';
 
 describe('Base behavior', () => {
   test('Should be defined', () => {

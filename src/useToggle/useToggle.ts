@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-import { UseToggle } from './typings';
+export type UseToggle = (initialState?: boolean | (() => boolean)) => [boolean, () => void];
 
 /**
  * Returns a state with true/false value and function for his toggle
@@ -9,12 +9,10 @@ import { UseToggle } from './typings';
  *
  * @see https://kundinos.github.io/docs/docs/react-hooks/hooks/use-toggle
  */
-const useToggle: UseToggle = (initialState = false) => {
+export const useToggle: UseToggle = (initialState = false) => {
   const [on, setOn] = useState(initialState);
 
   const toggle = useCallback(() => setOn((prev) => !prev), []);
 
   return [on, toggle];
 };
-
-export default useToggle;

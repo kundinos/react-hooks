@@ -1,13 +1,13 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, Dispatch, SetStateAction } from 'react';
 
-import { UseFullState } from './typings';
+export type UseFullState = <S>(initialState?: S | (() => S)) => [S, Dispatch<SetStateAction<S>>, S];
 
 /**
  * Works as useState, but contains third parameter with previous value of state
  *
  * @see https://kundinos.github.io/docs/docs/react-hooks/hooks/use-full-state
  */
-const useFullState: UseFullState = (initialState) => {
+export const useFullState: UseFullState = (initialState) => {
   const prevState = useRef(undefined);
   const [state, setState] = useState(initialState);
 
@@ -17,5 +17,3 @@ const useFullState: UseFullState = (initialState) => {
 
   return [state, setState, prevState.current];
 };
-
-export default useFullState;

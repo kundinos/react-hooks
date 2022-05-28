@@ -1,7 +1,7 @@
 import { fireEvent } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 
-import useScroll from './useScroll';
+import { useScroll } from './useScroll';
 
 describe('Base behavior', () => {
   test('Should be defined', () => {

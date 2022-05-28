@@ -1,1 +1,1 @@
-export { default } from './useGlobalState';
+export * from './useGlobalState';

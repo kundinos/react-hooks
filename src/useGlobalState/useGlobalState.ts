@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState, Dispatch, SetStateAction } from 'reac
 
 const store = { state: undefined, initialState: undefined, listeners: [] };
 
-const useGlobalState = <T>(initialState?: T): [T, Dispatch<SetStateAction<T>>] => {
+export const useGlobalState = <T>(initialState?: T): [T, Dispatch<SetStateAction<T>>] => {
   const [state, setState] = useState<T>(store.state || initialState);
 
   const isCurrentListener = useCallback((listener) => {
@@ -26,5 +26,3 @@ const useGlobalState = <T>(initialState?: T): [T, Dispatch<SetStateAction<T>>] =
 
   return [state, setState];
 };
-
-export default useGlobalState;
