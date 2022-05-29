@@ -5,7 +5,7 @@ const config: Config.InitialOptions = {
   automock: false,
   collectCoverage: false,
   collectCoverageFrom: ['**/*.{ts,tsx}'],
-  coverageDirectory: '../coverage',
+  coverageDirectory: 'coverage',
   rootDir: 'src',
   testEnvironment: 'jsdom',
 };
