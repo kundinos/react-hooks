@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
 
-import useCurrentDate from './useCurrentDate';
+import { useCurrentDate } from './useCurrentDate';
 
 jest.useFakeTimers();
 

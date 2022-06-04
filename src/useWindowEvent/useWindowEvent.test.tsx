@@ -1,7 +1,7 @@
 import { fireEvent } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 
-import useWindowEvent from './useWindowEvent';
+import { useWindowEvent } from './useWindowEvent';
 
 test('Should be defined', () => {
   expect(useWindowEvent).toBeDefined();

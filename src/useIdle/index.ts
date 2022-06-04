@@ -1,2 +1,1 @@
-export * from './typings';
-export { default } from './useIdle';
+export * from './useIdle';

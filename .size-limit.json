@@ -1,5 +1,16 @@
 [
   {
+    "name": "all",
+    "path": "./dist/index.es.js",
+    "limit": "1.4 kB"
+  },
+  {
+    "name": "useClickOutside",
+    "path": "./dist/index.es.js",
+    "import": "{ useClickOutside }",
+    "limit": "260 B"
+  },
+  {
     "name": "useCurrentDate",
     "path": "./dist/index.es.js",
     "import": "{ useCurrentDate }",
@@ -12,21 +23,9 @@
     "limit": "200 B"
   },
   {
-    "name": "useFetch",
-    "path": "./dist/index.es.js",
-    "import": "{ useFetch }",
-    "limit": "200 B"
-  },
-  {
     "name": "useFullState",
     "path": "./dist/index.es.js",
     "import": "{ useFullState }",
-    "limit": "200 B"
-  },
-  {
-    "name": "useGlobalState",
-    "path": "./dist/index.es.js",
-    "import": "{ useGlobalState }",
     "limit": "200 B"
   },
   {
@@ -64,12 +63,6 @@
     "path": "./dist/index.es.js",
     "import": "{ useScroll }",
     "limit": "300 B"
-  },
-  {
-    "name": "useSwitch",
-    "path": "./dist/index.es.js",
-    "import": "{ useSwitch }",
-    "limit": "100 B"
   },
   {
     "name": "useTimeout",

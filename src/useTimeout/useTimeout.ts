@@ -1,9 +1,30 @@
 import { useCallback, useEffect, useRef } from 'react';
 
-import { UseTimeout, Cleanup } from './typings';
+export type UseTimeoutCleanup = void | (() => void);
 
-const useTimeout: UseTimeout = (callback, delay) => {
-  const refCleanup = useRef<Cleanup>(null);
+export type UseTimeoutCallback = () => UseTimeoutCleanup;
+
+export type UseTimeoutDelay = number;
+
+export interface UseTimeoutResult {
+  reset: () => void;
+  repeat: () => void;
+}
+
+export type UseTimeout = (
+  callback: UseTimeoutCallback,
+  delay?: UseTimeoutDelay,
+) => UseTimeoutResult;
+
+/**
+ * Declarative version of setTimeout
+ * @param callback - Callback function, that will be called after specified delay time
+ * @param delay — Time in milliseconds for timeout
+ *
+ * @see https://kundinos.github.io/docs/docs/react-hooks/hooks/use-timeout
+ */
+export const useTimeout: UseTimeout = (callback, delay) => {
+  const refCleanup = useRef<UseTimeoutCleanup>(null);
   const refTimeoutId = useRef<NodeJS.Timeout>();
   const refIsCalled = useRef(false);
 
@@ -38,5 +59,3 @@ const useTimeout: UseTimeout = (callback, delay) => {
 
   return { reset, repeat };
 };
-
-export default useTimeout;

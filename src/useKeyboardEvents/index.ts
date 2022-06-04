@@ -1,2 +1,1 @@
-export * from './typings';
-export { default } from './useKeyboardEvents';
+export * from './useKeyboardEvents';
