@@ -29,12 +29,6 @@
     "limit": "200 B"
   },
   {
-    "name": "useGlobalState",
-    "path": "./dist/index.es.js",
-    "import": "{ useGlobalState }",
-    "limit": "200 B"
-  },
-  {
     "name": "useIdle",
     "path": "./dist/index.es.js",
     "import": "{ useIdle }",

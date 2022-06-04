@@ -2,7 +2,6 @@ export * from './useClickOutside';
 export * from './useCurrentDate';
 export * from './useDocumentEvent';
 export * from './useFullState';
-export * from './useGlobalState';
 export * from './useIdle';
 export * from './useInterval';
 export * from './useKeyboardEvents';
