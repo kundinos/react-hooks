@@ -4,7 +4,12 @@ This project adheres to [Semantic Versioning](http://semver.org/)
 
 ## 0.11.0
 
-- Add hook `useToggle`
+- Export all inner types
+- Add `useClickOutside`
+- Add `usePrefersColorScheme`
+- Delete `useSwitch` in favor `useToggle`
+- Delete `useFetch`, better to use separate libraries for that
+- Delete `useGlobalState`, better to use separate state managers
 
 ## 0.10.2
 
