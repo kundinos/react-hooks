@@ -35,7 +35,7 @@ export type UseKeyboardEvents = (eventsMap: EventsMap) => void;
  *  onArrowUp: () => console.log('Arrow up was pressed!'),
  * })
  *
- * @see https://kundinos.github.io/docs/docs/react-hooks/hooks/use-keyboard-events
+ * @see http://www.kundinos.ru/docs/react-hooks/hooks/use-keyboard-events
  */
 export const useKeyboardEvents: UseKeyboardEvents = (eventsMap) => {
   const handleKeyDown = useCallback(

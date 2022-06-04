@@ -15,7 +15,7 @@ const medias = ['dark', 'light'].map((theme) => `(prefers-color-scheme: ${theme}
 /**
  * Simplifies to detect if the user has requested a light or dark color theme
  *
- * @see https://kundinos.github.io/docs/docs/react-hooks/hooks/use-prefers-color-scheme
+ * @see http://www.kundinos.ru/docs/react-hooks/hooks/use-prefers-color-scheme
  */
 export const usePrefersColorScheme: UsePrefersColorScheme = () => {
   const [theme, setTheme] = useState<ColorScheme>(null);

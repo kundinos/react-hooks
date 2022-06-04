@@ -21,7 +21,7 @@ export type UseTimeout = (
  * @param callback - Callback function, that will be called after specified delay time
  * @param delay — Time in milliseconds for timeout
  *
- * @see https://kundinos.github.io/docs/docs/react-hooks/hooks/use-timeout
+ * @see http://www.kundinos.ru/docs/react-hooks/hooks/use-timeout
  */
 export const useTimeout: UseTimeout = (callback, delay) => {
   const refCleanup = useRef<UseTimeoutCleanup>(null);

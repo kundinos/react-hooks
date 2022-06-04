@@ -14,7 +14,7 @@ export type UseIdle = (options?: UseIdleOptions) => boolean;
 /**
  * Returns a stateful value about user idle or not
  *
- * @see https://kundinos.github.io/docs/docs/react-hooks/hooks/use-idle
+ * @see http://www.kundinos.ru/docs/react-hooks/hooks/use-idle
  */
 export const useIdle: UseIdle = (options = {}) => {
   const { onIdle, onWakeUp } = options;

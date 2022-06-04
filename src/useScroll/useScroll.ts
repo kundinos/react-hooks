@@ -24,7 +24,7 @@ export type UseScroll = (
  * Simplifies the subscribing to scroll of window and has previous/current scroll positions.
  * Deletes the subscription after unmount component
  *
- * @see https://kundinos.github.io/docs/docs/react-hooks/hooks/use-scroll
+ * @see http://www.kundinos.ru/docs/react-hooks/hooks/use-scroll
  */
 export const useScroll: UseScroll = (listener, options) => {
   const previous = useRef({ x: 0, y: 0 });

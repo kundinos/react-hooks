@@ -9,7 +9,7 @@ export type UseWindowEvent = <K extends keyof WindowEventMap>(
 /**
  * Simplifies the subscribing to events on window. Deletes the subscription after unmount component
  *
- * @see https://kundinos.github.io/docs/docs/react-hooks/hooks/use-window-event
+ * @see http://www.kundinos.ru/docs/react-hooks/hooks/use-window-event
  */
 export const useWindowEvent: UseWindowEvent = (type, listener, options) => {
   return useNativeEvent(window, type, listener, options);

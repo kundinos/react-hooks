@@ -12,7 +12,7 @@ export interface UseClickOutsideParams {
 /**
  * Helps to track click outside specified HTML Element
  *
- * @see https://kundinos.github.io/docs/docs/react-hooks/hooks/use-click-outside
+ * @see http://www.kundinos.ru/docs/react-hooks/hooks/use-click-outside
  */
 export function useClickOutside<T extends HTMLElement>(
   params: UseClickOutsideParams = {},

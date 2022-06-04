@@ -20,7 +20,7 @@ export type UseInterval = (
  * @param callback — Callback function, that will be called every interval time
  * @param interval — Time in milliseconds for interval, specify `null` to pause
  *
- * @see https://kundinos.github.io/docs/docs/react-hooks/hooks/use-interval
+ * @see http://www.kundinos.ru/docs/react-hooks/hooks/use-interval
  */
 export const useInterval: UseInterval = (callback, interval) => {
   const refCleanup = useRef<UseIntervalCleanup>(null);
