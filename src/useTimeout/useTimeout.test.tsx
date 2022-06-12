@@ -78,6 +78,36 @@ test('Must be reset correctly manually', async () => {
   expect(callback).not.toBeCalled();
 });
 
+test('Must be reset when timeout is null', async () => {
+  const callback = jest.fn();
+
+  renderHook(() => {
+    const [delay, setDelay] = useState(1000);
+
+    useEffect(() => {
+      const id = setTimeout(() => {
+        setDelay(null);
+      }, 500);
+
+      return () => clearTimeout(id);
+    }, []);
+
+    useTimeout(callback, delay);
+  });
+
+  expect(callback).not.toBeCalled();
+
+  reactAct(() => {
+    jest.advanceTimersToNextTimer();
+  });
+
+  reactAct(() => {
+    jest.runAllTimers();
+  });
+
+  expect(callback).not.toBeCalled();
+});
+
 test('Must no restart when change state', async () => {
   const callback = jest.fn();
 
