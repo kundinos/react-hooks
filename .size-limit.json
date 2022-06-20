@@ -2,13 +2,13 @@
   {
     "name": "all",
     "path": "./dist/index.es.js",
-    "limit": "1.4 kB"
+    "limit": "1.6 kB"
   },
   {
     "name": "useClickOutside",
     "path": "./dist/index.es.js",
     "import": "{ useClickOutside }",
-    "limit": "260 B"
+    "limit": "573 B"
   },
   {
     "name": "useCurrentDate",
@@ -20,7 +20,7 @@
     "name": "useDocumentEvent",
     "path": "./dist/index.es.js",
     "import": "{ useDocumentEvent }",
-    "limit": "200 B"
+    "limit": "487 B"
   },
   {
     "name": "useFullState",
@@ -32,7 +32,7 @@
     "name": "useIdle",
     "path": "./dist/index.es.js",
     "import": "{ useIdle }",
-    "limit": "500 B"
+    "limit": "808 B"
   },
   {
     "name": "useInterval",
@@ -44,25 +44,25 @@
     "name": "useKeyboardEvents",
     "path": "./dist/index.es.js",
     "import": "{ useKeyboardEvents }",
-    "limit": "400 B"
+    "limit": "718 B"
   },
   {
     "name": "useNativeEvent",
     "path": "./dist/index.es.js",
     "import": "{ useNativeEvent }",
-    "limit": "200 B"
+    "limit": "476 B"
   },
   {
     "name": "useWindowResize",
     "path": "./dist/index.es.js",
     "import": "{ useWindowResize }",
-    "limit": "200 B"
+    "limit": "504 B"
   },
   {
     "name": "useScroll",
     "path": "./dist/index.es.js",
     "import": "{ useScroll }",
-    "limit": "300 B"
+    "limit": "563 B"
   },
   {
     "name": "useTimeout",
@@ -80,6 +80,6 @@
     "name": "useWindowEvent",
     "path": "./dist/index.es.js",
     "import": "{ useWindowEvent }",
-    "limit": "200 B"
+    "limit": "489 B"
   }
 ]
