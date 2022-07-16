@@ -31,17 +31,18 @@ export const useTimeout: UseTimeout = (callback, delay) => {
   const reset = useCallback(() => {
     clearTimeout(refTimeoutId.current);
 
-    if (typeof refCleanup.current === 'function') refCleanup.current();
+    if (typeof refCleanup.current === 'function') {
+      refCleanup.current();
+      refCleanup.current = null;
+    }
   }, []);
 
   const start = useCallback(() => {
-    if (delay === null) return reset();
-
     refTimeoutId.current = setTimeout(() => {
       refCleanup.current = callback();
       refIsCalled.current = true;
     }, delay);
-  }, [callback, delay, reset]);
+  }, [callback, delay]);
 
   const repeat = useCallback(() => {
     refIsCalled.current = false;
@@ -50,12 +51,12 @@ export const useTimeout: UseTimeout = (callback, delay) => {
   }, [reset, start]);
 
   useEffect(() => {
-    if (!refIsCalled.current) {
-      start();
-    }
+    if (delay === null) return reset();
+
+    if (!refIsCalled.current) start();
 
     return reset;
-  }, [reset, start]);
+  }, [delay, reset, start]);
 
   return { reset, repeat };
 };
