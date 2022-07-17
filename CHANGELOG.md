@@ -2,6 +2,11 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/)
 
+## 0.12.0
+
+- feature: Use event delegation for native events
+- fix: Don't use the nullish operator
+
 ## 0.11.0
 
 - Export all inner types
