@@ -6,6 +6,7 @@ export * from './useIdle';
 export * from './useInterval';
 export * from './useKeyboardEvents';
 export * from './useNativeEvent';
+export * from './usePreferredLanguages';
 export * from './useWindowResize';
 export * from './useScroll';
 export * from './useTimeout';

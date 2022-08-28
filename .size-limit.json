@@ -80,6 +80,12 @@
     "name": "useWindowEvent",
     "path": "./dist/index.es.js",
     "import": "{ useWindowEvent }",
-    "limit": "489 B"
+    "limit": "490 B"
+  },
+  {
+    "name": "usePreferredLanguages",
+    "path": "./dist/index.es.js",
+    "import": "{ usePreferredLanguages }",
+    "limit": "95 B"
   }
 ]
