@@ -1,4 +1,6 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
+
+import { useMediaQuery, type UseMediaQueryCallback } from '../useMediaQuery';
 
 export type ColorScheme = 'dark' | 'light';
 
@@ -10,8 +12,6 @@ export interface UsePrefersColorSchemeResult {
 
 export type UsePrefersColorScheme = () => Partial<UsePrefersColorSchemeResult>;
 
-const medias = ['dark', 'light'].map((theme) => `(prefers-color-scheme: ${theme})`);
-
 /**
  * Simplifies to detect if the user has requested a light or dark color theme
  *
@@ -20,33 +20,18 @@ const medias = ['dark', 'light'].map((theme) => `(prefers-color-scheme: ${theme}
 export const usePrefersColorScheme: UsePrefersColorScheme = () => {
   const [theme, setTheme] = useState<ColorScheme>(null);
 
-  const handleChange = useCallback((arg: MediaQueryList | MediaQueryListEvent) => {
-    const index = medias.findIndex((media) => arg.media === media);
-    let newTheme: ColorScheme = index === 0 ? 'dark' : 'light';
+  const handleChange: UseMediaQueryCallback = useCallback((params) => {
+    let newTheme: ColorScheme = params.media.includes('dark') ? 'dark' : 'light';
 
-    if (!arg.matches) {
+    if (!params.matches) {
       newTheme = newTheme === 'dark' ? 'light' : 'dark';
     }
 
     setTheme(newTheme);
   }, []);
 
-  useEffect(() => {
-    const mqls = medias
-      .map((media) => window.matchMedia(media))
-      .map((mql) => {
-        handleChange(mql);
-        mql.addEventListener('change', handleChange);
-
-        return mql;
-      });
-
-    return () => {
-      mqls.forEach((mql) => {
-        mql.removeEventListener('change', handleChange);
-      });
-    };
-  }, [handleChange]);
+  useMediaQuery('(prefers-color-scheme: dark)', handleChange);
+  useMediaQuery('(prefers-color-scheme: light)', handleChange);
 
   return { theme, isDark: theme && theme === 'dark', isLight: theme && theme === 'light' };
 };

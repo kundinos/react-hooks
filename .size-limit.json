@@ -2,7 +2,7 @@
   {
     "name": "all",
     "path": "./dist/index.es.js",
-    "limit": "1.6 kB"
+    "limit": "1.79 kB"
   },
   {
     "name": "useClickOutside",
@@ -14,7 +14,7 @@
     "name": "useCurrentDate",
     "path": "./dist/index.es.js",
     "import": "{ useCurrentDate }",
-    "limit": "300 B"
+    "limit": "297 B"
   },
   {
     "name": "useDocumentEvent",
@@ -26,19 +26,19 @@
     "name": "useFullState",
     "path": "./dist/index.es.js",
     "import": "{ useFullState }",
-    "limit": "200 B"
+    "limit": "101 B"
   },
   {
     "name": "useIdle",
     "path": "./dist/index.es.js",
     "import": "{ useIdle }",
-    "limit": "808 B"
+    "limit": "809 B"
   },
   {
     "name": "useInterval",
     "path": "./dist/index.es.js",
     "import": "{ useInterval }",
-    "limit": "200 B"
+    "limit": "162 B"
   },
   {
     "name": "useKeyboardEvents",
@@ -50,13 +50,13 @@
     "name": "useNativeEvent",
     "path": "./dist/index.es.js",
     "import": "{ useNativeEvent }",
-    "limit": "476 B"
+    "limit": "475 B"
   },
   {
     "name": "useWindowResize",
     "path": "./dist/index.es.js",
     "import": "{ useWindowResize }",
-    "limit": "504 B"
+    "limit": "505 B"
   },
   {
     "name": "useScroll",
@@ -68,13 +68,13 @@
     "name": "useTimeout",
     "path": "./dist/index.es.js",
     "import": "{ useTimeout }",
-    "limit": "250 B"
+    "limit": "213 B"
   },
   {
     "name": "useToggle",
     "path": "./dist/index.es.js",
     "import": "{ useToggle }",
-    "limit": "100 B"
+    "limit": "88 B"
   },
   {
     "name": "useWindowEvent",
@@ -87,5 +87,17 @@
     "path": "./dist/index.es.js",
     "import": "{ usePreferredLanguages }",
     "limit": "95 B"
+  },
+  {
+    "name": "usePrefersColorScheme",
+    "path": "./dist/index.es.js",
+    "import": "{ usePrefersColorScheme }",
+    "limit": "304 B"
+  },
+  {
+    "name": "useMediaQuery",
+    "path": "./dist/index.es.js",
+    "import": "{ useMediaQuery }",
+    "limit": "183 B"
   }
 ]
