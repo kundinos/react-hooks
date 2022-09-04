@@ -7,7 +7,7 @@ export * from './useInterval';
 export * from './useKeyboardEvents';
 export * from './useMediaQuery';
 export * from './useNativeEvent';
-export * from './usePreferredLanguages';
+export * from './usePrefersLanguages';
 export * from './usePrefersColorScheme';
 export * from './useWindowResize';
 export * from './useScroll';

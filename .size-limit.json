@@ -83,9 +83,9 @@
     "limit": "490 B"
   },
   {
-    "name": "usePreferredLanguages",
+    "name": "usePrefersLanguages",
     "path": "./dist/index.es.js",
-    "import": "{ usePreferredLanguages }",
+    "import": "{ usePrefersLanguages }",
     "limit": "95 B"
   },
   {

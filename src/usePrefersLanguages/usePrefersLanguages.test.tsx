@@ -1,14 +1,14 @@
 import { renderHook } from '@testing-library/react-hooks';
 
-import { usePreferredLanguages } from './usePreferredLanguages';
+import { usePrefersLanguages } from './usePrefersLanguages';
 
 describe('Base behavior', () => {
   test('Should be defined', () => {
-    expect(usePreferredLanguages).toBeDefined();
+    expect(usePrefersLanguages).toBeDefined();
   });
 
   test('Should be render w/o errors', () => {
-    const { result } = renderHook(() => usePreferredLanguages());
+    const { result } = renderHook(() => usePrefersLanguages());
 
     expect(result.error).toBeUndefined();
   });
@@ -25,7 +25,7 @@ describe('Specific behavior', () => {
     languagesGetter.mockReturnValue(['ru', 'en', 'la']);
 
     const { result } = renderHook(() => {
-      return usePreferredLanguages();
+      return usePrefersLanguages();
     });
 
     expect(result.current).toMatchInlineSnapshot(`
