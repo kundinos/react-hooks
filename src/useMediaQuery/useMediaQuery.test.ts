@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react-hooks';
 import * as MockMediaQueries from '@kundinos/mock-media-queries';
 
 import { useMediaQuery } from './useMediaQuery';
@@ -34,12 +34,18 @@ describe('Returned value', () => {
   test('Should return correct value when media query matches/unmatches', () => {
     const onChange = jest.fn();
     const media = '(prefers-color-scheme: dark)';
-    const { result } = renderHook(() => useMediaQuery('(prefers-color-scheme: dark)', onChange));
+    const { result } = renderHook(() => useMediaQuery(media, onChange));
 
-    MockMediaQueries.fireEvent({ media, matches: true });
+    act(() => {
+      MockMediaQueries.fireEvent({ media, matches: true });
+    });
+
     expect(result.current).toBeTruthy();
 
-    MockMediaQueries.fireEvent({ media, matches: false });
+    act(() => {
+      MockMediaQueries.fireEvent({ media, matches: false });
+    });
+
     expect(result.current).toBeFalsy();
   });
 });
