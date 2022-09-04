@@ -2,19 +2,19 @@
   {
     "name": "all",
     "path": "./dist/index.es.js",
-    "limit": "1.79 kB"
+    "limit": "1.88 kB"
   },
   {
     "name": "useClickOutside",
     "path": "./dist/index.es.js",
     "import": "{ useClickOutside }",
-    "limit": "573 B"
+    "limit": "572 B"
   },
   {
     "name": "useCurrentDate",
     "path": "./dist/index.es.js",
     "import": "{ useCurrentDate }",
-    "limit": "297 B"
+    "limit": "298 B"
   },
   {
     "name": "useDocumentEvent",
@@ -26,13 +26,13 @@
     "name": "useFullState",
     "path": "./dist/index.es.js",
     "import": "{ useFullState }",
-    "limit": "101 B"
+    "limit": "102 B"
   },
   {
     "name": "useIdle",
     "path": "./dist/index.es.js",
     "import": "{ useIdle }",
-    "limit": "809 B"
+    "limit": "807 B"
   },
   {
     "name": "useInterval",
@@ -62,13 +62,13 @@
     "name": "useScroll",
     "path": "./dist/index.es.js",
     "import": "{ useScroll }",
-    "limit": "563 B"
+    "limit": "564 B"
   },
   {
     "name": "useTimeout",
     "path": "./dist/index.es.js",
     "import": "{ useTimeout }",
-    "limit": "213 B"
+    "limit": "215 B"
   },
   {
     "name": "useToggle",
@@ -87,6 +87,12 @@
     "path": "./dist/index.es.js",
     "import": "{ usePrefersLanguages }",
     "limit": "95 B"
+  },
+  {
+    "name": "usePrefersReducedMotion",
+    "path": "./dist/index.es.js",
+    "import": "{ usePrefersReducedMotion }",
+    "limit": "288 B"
   },
   {
     "name": "usePrefersColorScheme",

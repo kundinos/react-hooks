@@ -8,6 +8,7 @@ export * from './useKeyboardEvents';
 export * from './useMediaQuery';
 export * from './useNativeEvent';
 export * from './usePrefersLanguages';
+export * from './usePrefersReducedMotion';
 export * from './usePrefersColorScheme';
 export * from './useWindowResize';
 export * from './useScroll';
