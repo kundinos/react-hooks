@@ -1,6 +1,6 @@
 import { useEffect, useCallback, useState } from 'react';
 
-type MediaQuery = string;
+import { type MediaQuery } from '../shared-kernel';
 
 interface OnChangeParams {
   matches: boolean;

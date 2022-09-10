@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-import { useMediaQuery, type UseMediaQueryCallback } from '../useMediaQuery';
+import { useMediaQueries, type UseMediaQueryCallback } from '../useMediaQueries';
 
 export type PrefersReducedMotion = 'no-preference' | 'reduce';
 
@@ -25,8 +25,10 @@ export const usePrefersReducedMotion: UsePrefersReducedMotion = () => {
     }
   }, []);
 
-  useMediaQuery('(prefers-reduced-motion: reduce)', handleChange);
-  useMediaQuery('(prefers-reduced-motion: no-preference)', handleChange);
+  useMediaQueries({
+    '(prefers-reduced-motion: reduce)': handleChange,
+    '(prefers-reduced-motion: no-preference)': handleChange,
+  });
 
   return value;
 };

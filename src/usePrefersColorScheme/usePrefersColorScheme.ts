@@ -1,8 +1,7 @@
 import { useCallback, useState } from 'react';
 
-import { useMediaQuery, type UseMediaQueryCallback } from '../useMediaQuery';
-
-export type ColorScheme = 'dark' | 'light';
+import { useMediaQueries, type UseMediaQueryCallback } from '../useMediaQueries';
+import { ColorScheme } from '../shared-kernel';
 
 export interface UsePrefersColorSchemeResult {
   theme: ColorScheme;
@@ -30,8 +29,10 @@ export const usePrefersColorScheme: UsePrefersColorScheme = () => {
     setTheme(newTheme);
   }, []);
 
-  useMediaQuery('(prefers-color-scheme: dark)', handleChange);
-  useMediaQuery('(prefers-color-scheme: light)', handleChange);
+  useMediaQueries({
+    '(prefers-color-scheme: dark)': handleChange,
+    '(prefers-color-scheme: light)': handleChange,
+  });
 
   return { theme, isDark: theme && theme === 'dark', isLight: theme && theme === 'light' };
 };
