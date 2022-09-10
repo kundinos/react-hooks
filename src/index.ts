@@ -7,6 +7,7 @@ export * from './useInterval';
 export * from './useKeyboardEvents';
 export * from './useMediaQuery';
 export * from './useNativeEvent';
+export * from './usePrefers';
 export * from './usePrefersLanguages';
 export * from './usePrefersReducedMotion';
 export * from './usePrefersColorScheme';

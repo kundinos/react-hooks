@@ -2,7 +2,7 @@
   {
     "name": "all",
     "path": "./dist/index.es.js",
-    "limit": "1.88 kB"
+    "limit": "1.911 kB"
   },
   {
     "name": "useClickOutside",
@@ -51,6 +51,12 @@
     "path": "./dist/index.es.js",
     "import": "{ useNativeEvent }",
     "limit": "475 B"
+  },
+  {
+    "name": "usePrefers",
+    "path": "./dist/index.es.js",
+    "import": "{ usePrefers }",
+    "limit": "447 B"
   },
   {
     "name": "useWindowResize",
