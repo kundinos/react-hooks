@@ -1,6 +1,7 @@
-import { usePrefersColorScheme, type ColorScheme } from '../usePrefersColorScheme';
+import { usePrefersColorScheme } from '../usePrefersColorScheme';
 import { usePrefersLanguages, type PrefersLanguages } from '../usePrefersLanguages';
 import { usePrefersReducedMotion, type PrefersReducedMotion } from '../usePrefersReducedMotion';
+import { ColorScheme } from '../shared-kernel';
 
 export interface UsePrefersResult {
   colorScheme: ColorScheme;

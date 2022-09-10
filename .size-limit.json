@@ -2,13 +2,13 @@
   {
     "name": "all",
     "path": "./dist/index.es.js",
-    "limit": "1887 B"
+    "limit": "1958 B"
   },
   {
     "name": "useClickOutside",
     "path": "./dist/index.es.js",
     "import": "{ useClickOutside }",
-    "limit": "573 B"
+    "limit": "572 B"
   },
   {
     "name": "useCurrentDate",
@@ -47,16 +47,28 @@
     "limit": "696 B"
   },
   {
+    "name": "useMediaQueries",
+    "path": "./dist/index.es.js",
+    "import": "{ useMediaQueries }",
+    "limit": "156 B"
+  },
+  {
+    "name": "useMediaQuery",
+    "path": "./dist/index.es.js",
+    "import": "{ useMediaQuery }",
+    "limit": "183 B"
+  },
+  {
     "name": "useNativeEvent",
     "path": "./dist/index.es.js",
     "import": "{ useNativeEvent }",
-    "limit": "475 B"
+    "limit": "474 B"
   },
   {
     "name": "usePrefers",
     "path": "./dist/index.es.js",
     "import": "{ usePrefers }",
-    "limit": "448 B"
+    "limit": "445 B"
   },
   {
     "name": "useWindowResize",
@@ -98,18 +110,12 @@
     "name": "usePrefersReducedMotion",
     "path": "./dist/index.es.js",
     "import": "{ usePrefersReducedMotion }",
-    "limit": "287 B"
+    "limit": "280 B"
   },
   {
     "name": "usePrefersColorScheme",
     "path": "./dist/index.es.js",
     "import": "{ usePrefersColorScheme }",
-    "limit": "304 B"
-  },
-  {
-    "name": "useMediaQuery",
-    "path": "./dist/index.es.js",
-    "import": "{ useMediaQuery }",
-    "limit": "183 B"
+    "limit": "298 B"
   }
 ]
