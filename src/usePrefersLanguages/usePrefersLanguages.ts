@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 
-export type UsePrefersLanguages = () => readonly string[];
+export type PrefersLanguages = readonly string[];
+
+export type UsePrefersLanguages = () => PrefersLanguages;
 
 /**
  * Return the array of preferred languages
@@ -8,7 +10,7 @@ export type UsePrefersLanguages = () => readonly string[];
  * @see http://www.kundinos.ru/docs/react-hooks/hooks/use-prefers-languages
  */
 export const usePrefersLanguages: UsePrefersLanguages = () => {
-  const [languages, setLanguages] = useState<readonly string[]>([]);
+  const [languages, setLanguages] = useState<PrefersLanguages>([]);
 
   useEffect(() => {
     setLanguages(window.navigator.languages);
