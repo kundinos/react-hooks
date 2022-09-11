@@ -1,7 +1,7 @@
 import { usePrefersColorScheme } from '../usePrefersColorScheme';
-import { usePrefersLanguages, type PrefersLanguages } from '../usePrefersLanguages';
-import { usePrefersReducedMotion, type PrefersReducedMotion } from '../usePrefersReducedMotion';
-import { ColorScheme } from '../shared-kernel';
+import { usePrefersLanguages } from '../usePrefersLanguages';
+import { usePrefersReducedMotion } from '../usePrefersReducedMotion';
+import { ColorScheme, PrefersLanguages, PrefersReducedMotion } from '../shared-kernel';
 
 export interface UsePrefersResult {
   colorScheme: ColorScheme;
@@ -13,6 +13,7 @@ export type UsePrefers = () => UsePrefersResult;
 
 /**
  * Simplifies to detect the user preferences
+ * Return the prefers color scheme, languages and need to reduce motion
  *
  * @see http://www.kundinos.ru/docs/react-hooks/hooks/use-prefers
  */

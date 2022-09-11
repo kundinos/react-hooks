@@ -1,8 +1,7 @@
 import { useCallback, useState } from 'react';
 
 import { useMediaQueries, type UseMediaQueryCallback } from '../useMediaQueries';
-
-export type PrefersReducedMotion = 'no-preference' | 'reduce';
+import { PrefersReducedMotion } from '../shared-kernel';
 
 export type UsePrefersReducedMotion = () => PrefersReducedMotion;
 

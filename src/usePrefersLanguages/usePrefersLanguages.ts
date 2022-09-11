@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export type PrefersLanguages = readonly string[];
+import { PrefersLanguages } from '../shared-kernel';
 
 export type UsePrefersLanguages = () => PrefersLanguages;
 
