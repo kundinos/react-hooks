@@ -2,7 +2,7 @@
   {
     "name": "all",
     "path": "./dist/index.es.js",
-    "limit": "1947 B"
+    "limit": "1953 B"
   },
   {
     "name": "useClickOutside",
@@ -50,7 +50,7 @@
     "name": "useMediaQueries",
     "path": "./dist/index.es.js",
     "import": "{ useMediaQueries }",
-    "limit": "156 B"
+    "limit": "164 B"
   },
   {
     "name": "useMediaQuery",
@@ -68,7 +68,7 @@
     "name": "usePrefers",
     "path": "./dist/index.es.js",
     "import": "{ usePrefers }",
-    "limit": "439 B"
+    "limit": "447 B"
   },
   {
     "name": "useWindowResize",
@@ -110,12 +110,12 @@
     "name": "usePrefersReducedMotion",
     "path": "./dist/index.es.js",
     "import": "{ usePrefersReducedMotion }",
-    "limit": "274 B"
+    "limit": "282 B"
   },
   {
     "name": "usePrefersColorScheme",
     "path": "./dist/index.es.js",
     "import": "{ usePrefersColorScheme }",
-    "limit": "298 B"
+    "limit": "306 B"
   }
 ]
