@@ -14,7 +14,6 @@ export const usePrefersReducedMotion: UsePrefersReducedMotion = () => {
   const [value, setValue] = useState<PrefersReducedMotion>('no-preference');
 
   const handleChange: UseMediaQueryCallback = useCallback(({ media, matches }) => {
-    console.log(matches, media);
     if (media === '(prefers-reduced-motion: reduce)') {
       setValue(matches ? 'reduce' : 'no-preference');
     }

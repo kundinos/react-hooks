@@ -2,7 +2,7 @@
   {
     "name": "all",
     "path": "./dist/index.es.js",
-    "limit": "1958 B"
+    "limit": "1947 B"
   },
   {
     "name": "useClickOutside",
@@ -68,7 +68,7 @@
     "name": "usePrefers",
     "path": "./dist/index.es.js",
     "import": "{ usePrefers }",
-    "limit": "445 B"
+    "limit": "439 B"
   },
   {
     "name": "useWindowResize",
@@ -86,7 +86,7 @@
     "name": "useTimeout",
     "path": "./dist/index.es.js",
     "import": "{ useTimeout }",
-    "limit": "213 B"
+    "limit": "215 B"
   },
   {
     "name": "useToggle",
@@ -110,7 +110,7 @@
     "name": "usePrefersReducedMotion",
     "path": "./dist/index.es.js",
     "import": "{ usePrefersReducedMotion }",
-    "limit": "280 B"
+    "limit": "274 B"
   },
   {
     "name": "usePrefersColorScheme",
