@@ -24,6 +24,23 @@ export type EventsMap = Partial<Record<EventsList, Handler>>;
 
 export type UseKeyboardEvents = (eventsMap: EventsMap) => void;
 
+const config = [
+  { event: 'onKeyDown' },
+  { event: 'onKeyUp' },
+  { event: 'onKeyPress' },
+  { codes: ['Escape'], event: 'onEscape' },
+  { codes: ['Tab'], event: 'onTab' },
+  { codes: ['ArrowLeft'], event: 'onArrowLeft' },
+  { codes: ['ArrowRight'], event: 'onArrowRight' },
+  { codes: ['ArrowUp'], event: 'onArrowUp' },
+  { codes: ['ArrowDown'], event: 'onArrowDown' },
+  { codes: ['ArrowLeft', 'KeyA'], event: 'onLeft' },
+  { codes: ['ArrowRight', 'KeyD'], event: 'onRight' },
+  { codes: ['ArrowUp', 'KeyW'], event: 'onUp' },
+  { codes: ['ArrowDown', 'KeyS'], event: 'onDown' },
+  { codes: ['Space'], event: 'onSpace' },
+];
+
 /**
  * Simplifies the subscribing to events on keyboard. Deletes the subscriptions after unmount component
  *
@@ -38,72 +55,19 @@ export type UseKeyboardEvents = (eventsMap: EventsMap) => void;
  * @see http://www.kundinos.ru/docs/react-hooks/hooks/use-keyboard-events
  */
 export const useKeyboardEvents: UseKeyboardEvents = (eventsMap) => {
-  const handleKeyDown = useCallback(
+  const handleEvent = useCallback(
     (e: KeyboardEvent) => {
-      if (eventsMap.onKeyDown) eventsMap.onKeyDown(e);
+      config.forEach((item) => {
+        if (!eventsMap[item.event]) return;
+        if (item.codes && !item.codes.includes(e.code)) return;
 
-      if (eventsMap.onEscape && e.code === 'Escape') {
-        eventsMap.onEscape(e);
-      }
-
-      if (eventsMap.onTab && e.code === 'Tab') {
-        eventsMap.onTab(e);
-      }
-
-      if (eventsMap.onArrowLeft && e.code === 'ArrowLeft') {
-        eventsMap.onArrowLeft(e);
-      }
-
-      if (eventsMap.onArrowRight && e.code === 'ArrowRight') {
-        eventsMap.onArrowRight(e);
-      }
-
-      if (eventsMap.onArrowUp && e.code === 'ArrowUp') {
-        eventsMap.onArrowUp(e);
-      }
-
-      if (eventsMap.onArrowDown && e.code === 'ArrowDown') {
-        eventsMap.onArrowDown(e);
-      }
-
-      if (eventsMap.onLeft && ['ArrowLeft', 'KeyA'].includes(e.code)) {
-        eventsMap.onLeft(e);
-      }
-
-      if (eventsMap.onRight && ['ArrowRight', 'KeyD'].includes(e.code)) {
-        eventsMap.onRight(e);
-      }
-
-      if (eventsMap.onUp && ['ArrowUp', 'KeyW'].includes(e.code)) {
-        eventsMap.onUp(e);
-      }
-
-      if (eventsMap.onDown && ['ArrowDown', 'KeyS'].includes(e.code)) {
-        eventsMap.onDown(e);
-      }
-
-      if (eventsMap.onSpace && e.code === 'Space') {
-        eventsMap.onSpace(e);
-      }
+        eventsMap[item.event](e);
+      });
     },
     [eventsMap],
   );
 
-  const handleKeyUp = useCallback(
-    (e: KeyboardEvent) => {
-      if (eventsMap.onKeyUp) eventsMap.onKeyUp(e);
-    },
-    [eventsMap],
-  );
-
-  const handleKeyPress = useCallback(
-    (e: KeyboardEvent) => {
-      if (eventsMap.onKeyPress) eventsMap.onKeyPress(e);
-    },
-    [eventsMap],
-  );
-
-  useWindowEvent('keydown', handleKeyDown);
-  useWindowEvent('keypress', handleKeyPress);
-  useWindowEvent('keyup', handleKeyUp);
+  useWindowEvent('keydown', handleEvent);
+  useWindowEvent('keypress', handleEvent);
+  useWindowEvent('keyup', handleEvent);
 };

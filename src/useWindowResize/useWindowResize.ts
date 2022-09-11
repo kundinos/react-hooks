@@ -7,7 +7,8 @@ export type UseWindowResize = (
 ) => void;
 
 /**
- * Simplifies the subscribing to resize of window. Deletes the subscription after unmount component
+ * Simplifies the subscribing to resize of window.
+ * Deletes the subscription after unmount component
  *
  * @see http://www.kundinos.ru/docs/react-hooks/hooks/use-window-resize
  */

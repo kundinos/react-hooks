@@ -2,31 +2,31 @@
   {
     "name": "all",
     "path": "./dist/index.es.js",
-    "limit": "1.6 kB"
+    "limit": "1953 B"
   },
   {
     "name": "useClickOutside",
     "path": "./dist/index.es.js",
     "import": "{ useClickOutside }",
-    "limit": "573 B"
+    "limit": "572 B"
   },
   {
     "name": "useCurrentDate",
     "path": "./dist/index.es.js",
     "import": "{ useCurrentDate }",
-    "limit": "300 B"
+    "limit": "298 B"
   },
   {
     "name": "useDocumentEvent",
     "path": "./dist/index.es.js",
     "import": "{ useDocumentEvent }",
-    "limit": "487 B"
+    "limit": "486 B"
   },
   {
     "name": "useFullState",
     "path": "./dist/index.es.js",
     "import": "{ useFullState }",
-    "limit": "200 B"
+    "limit": "102 B"
   },
   {
     "name": "useIdle",
@@ -38,19 +38,37 @@
     "name": "useInterval",
     "path": "./dist/index.es.js",
     "import": "{ useInterval }",
-    "limit": "200 B"
+    "limit": "162 B"
   },
   {
     "name": "useKeyboardEvents",
     "path": "./dist/index.es.js",
     "import": "{ useKeyboardEvents }",
-    "limit": "718 B"
+    "limit": "696 B"
+  },
+  {
+    "name": "useMediaQueries",
+    "path": "./dist/index.es.js",
+    "import": "{ useMediaQueries }",
+    "limit": "164 B"
+  },
+  {
+    "name": "useMediaQuery",
+    "path": "./dist/index.es.js",
+    "import": "{ useMediaQuery }",
+    "limit": "183 B"
   },
   {
     "name": "useNativeEvent",
     "path": "./dist/index.es.js",
     "import": "{ useNativeEvent }",
-    "limit": "476 B"
+    "limit": "474 B"
+  },
+  {
+    "name": "usePrefers",
+    "path": "./dist/index.es.js",
+    "import": "{ usePrefers }",
+    "limit": "447 B"
   },
   {
     "name": "useWindowResize",
@@ -68,18 +86,36 @@
     "name": "useTimeout",
     "path": "./dist/index.es.js",
     "import": "{ useTimeout }",
-    "limit": "250 B"
+    "limit": "215 B"
   },
   {
     "name": "useToggle",
     "path": "./dist/index.es.js",
     "import": "{ useToggle }",
-    "limit": "100 B"
+    "limit": "88 B"
   },
   {
     "name": "useWindowEvent",
     "path": "./dist/index.es.js",
     "import": "{ useWindowEvent }",
     "limit": "489 B"
+  },
+  {
+    "name": "usePrefersLanguages",
+    "path": "./dist/index.es.js",
+    "import": "{ usePrefersLanguages }",
+    "limit": "95 B"
+  },
+  {
+    "name": "usePrefersReducedMotion",
+    "path": "./dist/index.es.js",
+    "import": "{ usePrefersReducedMotion }",
+    "limit": "282 B"
+  },
+  {
+    "name": "usePrefersColorScheme",
+    "path": "./dist/index.es.js",
+    "import": "{ usePrefersColorScheme }",
+    "limit": "306 B"
   }
 ]
