@@ -16,8 +16,12 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
-  "plugins": ["import", "react", "prettier"],
+  "plugins": ["import", "react", "prettier", "autofix"],
   "rules": {
+    // Autofix
+    "autofix/no-console": "warn",
+    "autofix/no-debugger": "warn",
+
     "prettier/prettier": "error",
     "import/no-extraneous-dependencies": [
       "error",
