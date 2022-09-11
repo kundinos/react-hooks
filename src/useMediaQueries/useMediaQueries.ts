@@ -15,6 +15,7 @@ export function useMediaQueries(mediasMap: MediasMap) {
     const mqls = Object.entries(mediasMap).map(([media, callback]) => {
       const mql = window.matchMedia(media);
 
+      if (mql.matches) callback(mql);
       mql.addEventListener('change', callback);
 
       return mql;
