@@ -5,6 +5,12 @@ This project adheres to [Semantic Versioning](http://semver.org/)
 ## 0.12.0
 
 - feature: Use event delegation for native events
+- feature: Add the hook `useMediaQueries`
+- feature: Add the hooo `useMediaQuery`
+- feature: Add the hook `usePrefers`
+- feature: Add the hook `usePrefersLanguages`
+- feature: Add the hook `usePrefersReducedMotion`
+- feature: Add the hook `usePrefersColorScheme`
 - fix: Don't use the nullish operator
 
 ## 0.11.0
