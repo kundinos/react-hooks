@@ -12,10 +12,10 @@ describe('Must correctly call the listeners', () => {
 
     expect(onKeyDown).toHaveBeenCalledTimes(0);
 
-    fireEvent.keyDown(window, eventOpts);
+    fireEvent.keyDown(document, eventOpts);
     expect(onKeyDown).toHaveBeenCalledTimes(1);
 
-    fireEvent.keyDown(window, eventOpts);
+    fireEvent.keyDown(document, eventOpts);
     expect(onKeyDown).toHaveBeenCalledTimes(2);
   });
 
@@ -27,10 +27,10 @@ describe('Must correctly call the listeners', () => {
 
     expect(onKeyPress).toHaveBeenCalledTimes(0);
 
-    fireEvent.keyPress(window, eventOpts);
+    fireEvent.keyPress(document, eventOpts);
     expect(onKeyPress).toHaveBeenCalledTimes(1);
 
-    fireEvent.keyPress(window, eventOpts);
+    fireEvent.keyPress(document, eventOpts);
     expect(onKeyPress).toHaveBeenCalledTimes(2);
   });
 
@@ -42,10 +42,10 @@ describe('Must correctly call the listeners', () => {
 
     expect(onKeyUp).toHaveBeenCalledTimes(0);
 
-    fireEvent.keyUp(window, eventOpts);
+    fireEvent.keyUp(document, eventOpts);
     expect(onKeyUp).toHaveBeenCalledTimes(1);
 
-    fireEvent.keyUp(window, eventOpts);
+    fireEvent.keyUp(document, eventOpts);
     expect(onKeyUp).toHaveBeenCalledTimes(2);
   });
 
@@ -57,10 +57,10 @@ describe('Must correctly call the listeners', () => {
 
     expect(onArrowUp).toHaveBeenCalledTimes(0);
 
-    fireEvent.keyDown(window, eventOpts);
+    fireEvent.keyDown(document, eventOpts);
     expect(onArrowUp).toHaveBeenCalledTimes(1);
 
-    fireEvent.keyDown(window, eventOpts);
+    fireEvent.keyDown(document, eventOpts);
     expect(onArrowUp).toHaveBeenCalledTimes(2);
   });
 
@@ -72,10 +72,10 @@ describe('Must correctly call the listeners', () => {
 
     expect(onArrowRight).toHaveBeenCalledTimes(0);
 
-    fireEvent.keyDown(window, eventOpts);
+    fireEvent.keyDown(document, eventOpts);
     expect(onArrowRight).toHaveBeenCalledTimes(1);
 
-    fireEvent.keyDown(window, eventOpts);
+    fireEvent.keyDown(document, eventOpts);
     expect(onArrowRight).toHaveBeenCalledTimes(2);
   });
 
@@ -87,10 +87,10 @@ describe('Must correctly call the listeners', () => {
 
     expect(onArrowDown).toHaveBeenCalledTimes(0);
 
-    fireEvent.keyDown(window, eventOpts);
+    fireEvent.keyDown(document, eventOpts);
     expect(onArrowDown).toHaveBeenCalledTimes(1);
 
-    fireEvent.keyDown(window, eventOpts);
+    fireEvent.keyDown(document, eventOpts);
     expect(onArrowDown).toHaveBeenCalledTimes(2);
   });
 
@@ -102,10 +102,10 @@ describe('Must correctly call the listeners', () => {
 
     expect(onArrowLeft).toHaveBeenCalledTimes(0);
 
-    fireEvent.keyDown(window, eventOpts);
+    fireEvent.keyDown(document, eventOpts);
     expect(onArrowLeft).toHaveBeenCalledTimes(1);
 
-    fireEvent.keyDown(window, eventOpts);
+    fireEvent.keyDown(document, eventOpts);
     expect(onArrowLeft).toHaveBeenCalledTimes(2);
   });
 
@@ -118,10 +118,10 @@ describe('Must correctly call the listeners', () => {
 
     expect(onUp).toHaveBeenCalledTimes(0);
 
-    fireEvent.keyDown(window, eventArrowOpts);
+    fireEvent.keyDown(document, eventArrowOpts);
     expect(onUp).toHaveBeenCalledTimes(1);
 
-    fireEvent.keyDown(window, eventSymbolOpts);
+    fireEvent.keyDown(document, eventSymbolOpts);
     expect(onUp).toHaveBeenCalledTimes(2);
   });
 
@@ -134,10 +134,10 @@ describe('Must correctly call the listeners', () => {
 
     expect(onRight).toHaveBeenCalledTimes(0);
 
-    fireEvent.keyDown(window, eventArrowOpts);
+    fireEvent.keyDown(document, eventArrowOpts);
     expect(onRight).toHaveBeenCalledTimes(1);
 
-    fireEvent.keyDown(window, eventSymbolOpts);
+    fireEvent.keyDown(document, eventSymbolOpts);
     expect(onRight).toHaveBeenCalledTimes(2);
   });
 
@@ -150,10 +150,10 @@ describe('Must correctly call the listeners', () => {
 
     expect(onDown).toHaveBeenCalledTimes(0);
 
-    fireEvent.keyDown(window, eventArrowOpts);
+    fireEvent.keyDown(document, eventArrowOpts);
     expect(onDown).toHaveBeenCalledTimes(1);
 
-    fireEvent.keyDown(window, eventSymbolOpts);
+    fireEvent.keyDown(document, eventSymbolOpts);
     expect(onDown).toHaveBeenCalledTimes(2);
   });
 
@@ -166,10 +166,10 @@ describe('Must correctly call the listeners', () => {
 
     expect(onLeft).toHaveBeenCalledTimes(0);
 
-    fireEvent.keyDown(window, eventArrowOpts);
+    fireEvent.keyDown(document, eventArrowOpts);
     expect(onLeft).toHaveBeenCalledTimes(1);
 
-    fireEvent.keyDown(window, eventSymbolOpts);
+    fireEvent.keyDown(document, eventSymbolOpts);
     expect(onLeft).toHaveBeenCalledTimes(2);
   });
 
@@ -181,10 +181,10 @@ describe('Must correctly call the listeners', () => {
 
     expect(onSpace).toHaveBeenCalledTimes(0);
 
-    fireEvent.keyDown(window, eventOpts);
+    fireEvent.keyDown(document, eventOpts);
     expect(onSpace).toHaveBeenCalledTimes(1);
 
-    fireEvent.keyDown(window, eventOpts);
+    fireEvent.keyDown(document, eventOpts);
     expect(onSpace).toHaveBeenCalledTimes(2);
   });
 
@@ -196,10 +196,10 @@ describe('Must correctly call the listeners', () => {
 
     expect(onEscape).toHaveBeenCalledTimes(0);
 
-    fireEvent.keyDown(window, eventOpts);
+    fireEvent.keyDown(document, eventOpts);
     expect(onEscape).toHaveBeenCalledTimes(1);
 
-    fireEvent.keyDown(window, eventOpts);
+    fireEvent.keyDown(document, eventOpts);
     expect(onEscape).toHaveBeenCalledTimes(2);
   });
 
@@ -211,10 +211,10 @@ describe('Must correctly call the listeners', () => {
 
     expect(onTab).toHaveBeenCalledTimes(0);
 
-    fireEvent.keyDown(window, eventOpts);
+    fireEvent.keyDown(document, eventOpts);
     expect(onTab).toHaveBeenCalledTimes(1);
 
-    fireEvent.keyDown(window, eventOpts);
+    fireEvent.keyDown(document, eventOpts);
     expect(onTab).toHaveBeenCalledTimes(2);
   });
 });
