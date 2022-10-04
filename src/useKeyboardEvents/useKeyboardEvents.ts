@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-import { useWindowEvent } from '../useWindowEvent';
+import { useDocumentEvent } from '../useDocumentEvent';
 
 export type Handler = (e: KeyboardEvent) => void;
 
@@ -67,7 +67,7 @@ export const useKeyboardEvents: UseKeyboardEvents = (eventsMap) => {
     [eventsMap],
   );
 
-  useWindowEvent('keydown', handleEvent);
-  useWindowEvent('keypress', handleEvent);
-  useWindowEvent('keyup', handleEvent);
+  useDocumentEvent('keydown', handleEvent);
+  useDocumentEvent('keypress', handleEvent);
+  useDocumentEvent('keyup', handleEvent);
 };
