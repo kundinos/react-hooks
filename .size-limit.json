@@ -2,7 +2,7 @@
   {
     "name": "all",
     "path": "./dist/index.es.js",
-    "limit": "1953 B"
+    "limit": "1954 B"
   },
   {
     "name": "useClickOutside",
@@ -44,7 +44,7 @@
     "name": "useKeyboardEvents",
     "path": "./dist/index.es.js",
     "import": "{ useKeyboardEvents }",
-    "limit": "696 B"
+    "limit": "695 B"
   },
   {
     "name": "useMediaQueries",
@@ -74,7 +74,7 @@
     "name": "useWindowResize",
     "path": "./dist/index.es.js",
     "import": "{ useWindowResize }",
-    "limit": "504 B"
+    "limit": "503 B"
   },
   {
     "name": "useScroll",
